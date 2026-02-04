@@ -1,20 +1,36 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <!-- Header: Logo and Language Switcher -->
+    <div class="header-container">
+      <div class="logo-section">
+        <h1>VSB</h1>
+      </div>
+      <div class="language-switcher">
+        <!-- Language buttons will be added in Step 3 -->
+      </div>
+    </div>
+
+    <!-- Step Indicator -->
+    <div class="step-indicator">
+      <!-- Step indicator will be added in Step 4 -->
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content>
+  <div class="content-container">
+    <!-- Multi-step form will be here -->
+    <div class="form-wrapper">
+      <p>Form content placeholder</p>
+    </div>
   </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-container">
+      <!-- Navigation buttons will be added later -->
+      <ion-button expand="block" class="next-button"> Next </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
