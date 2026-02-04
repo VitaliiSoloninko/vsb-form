@@ -6,7 +6,16 @@
         <h1>VSB</h1>
       </div>
       <div class="language-switcher">
-        <!-- Language buttons will be added in Step 3 -->
+        @for (lang of languages; track lang.code) {
+        <button
+          class="lang-btn"
+          [class.active]="currentLanguage === lang.code"
+          (click)="changeLanguage(lang.code)"
+          [title]="lang.name"
+        >
+          {{ lang.code.toUpperCase() }}
+        </button>
+        }
       </div>
     </div>
 
