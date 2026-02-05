@@ -1,0 +1,9 @@
+.button-group {
+  display: flex;
+  gap: 12px;
+
+  ion-button {
+    margin: 0;
+    flex: 1;
+  }
+}

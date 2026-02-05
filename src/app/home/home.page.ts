@@ -11,6 +11,11 @@ import {
   LanguageSwitcherComponent,
 } from '../components/language-switcher/language-switcher.component';
 import { StepIndicatorComponent } from '../components/step-indicator/step-indicator.component';
+import { Step1PersonalComponent } from '../components/steps/step1-personal/step1-personal.component';
+import { Step2ContactComponent } from '../components/steps/step2-contact/step2-contact.component';
+import { Step3EducationComponent } from '../components/steps/step3-education/step3-education.component';
+import { Step4LanguagesComponent } from '../components/steps/step4-languages/step4-languages.component';
+import { Step5WorkExperienceComponent } from '../components/steps/step5-work-experience/step5-work-experience.component';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +29,11 @@ import { StepIndicatorComponent } from '../components/step-indicator/step-indica
     IonButton,
     StepIndicatorComponent,
     LanguageSwitcherComponent,
+    Step1PersonalComponent,
+    Step2ContactComponent,
+    Step3EducationComponent,
+    Step4LanguagesComponent,
+    Step5WorkExperienceComponent,
   ],
 })
 export class HomePage {

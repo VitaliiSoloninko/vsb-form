@@ -1,0 +1,17 @@
+<div class="button-group">
+  @if (currentStep() > 1) {
+    <ion-button expand="block" fill="outline" (click)="onPrevious()">
+      Back
+    </ion-button>
+  }
+
+  @if (currentStep() < totalSteps()) {
+    <ion-button expand="block" (click)="onNext()"> Next </ion-button>
+  }
+
+  @if (currentStep() === totalSteps()) {
+    <ion-button expand="block" color="success" (click)="onSubmit()">
+      Create PDF
+    </ion-button>
+  }
+</div>
