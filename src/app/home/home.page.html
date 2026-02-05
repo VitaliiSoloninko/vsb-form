@@ -21,15 +21,15 @@
   <div class="content-container">
     <div class="form-wrapper">
       @if (currentStep === 1) {
-      <app-step1-personal />
+      <app-step1-personal [formGroup]="personalForm" />
       } @if (currentStep === 2) {
-      <app-step2-contact />
+      <app-step2-contact [formGroup]="contactForm" />
       } @if (currentStep === 3) {
-      <app-step3-education />
+      <app-step3-education [formGroup]="educationForm" />
       } @if (currentStep === 4) {
-      <app-step4-languages />
+      <app-step4-languages [formGroup]="languagesForm" />
       } @if (currentStep === 5) {
-      <app-step5-work-experience />
+      <app-step5-work-experience [formGroup]="applicationForm" />
       }
     </div>
   </div>

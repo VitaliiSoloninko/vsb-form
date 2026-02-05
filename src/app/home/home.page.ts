@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import {
   IonButton,
   IonContent,
@@ -22,6 +28,7 @@ import { Step5WorkExperienceComponent } from '../components/steps/step5-work-exp
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   imports: [
+    ReactiveFormsModule,
     IonHeader,
     IonToolbar,
     IonContent,
@@ -36,10 +43,12 @@ import { Step5WorkExperienceComponent } from '../components/steps/step5-work-exp
     Step5WorkExperienceComponent,
   ],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   currentLanguage = 'de';
   currentStep = 1;
   totalSteps = 5;
+
+  applicationForm!: FormGroup;
 
   languages: Language[] = [
     { code: 'de', name: 'Deutsch' },
@@ -49,7 +58,74 @@ export class HomePage {
     { code: 'ua', name: 'Українська' },
   ];
 
-  constructor() {}
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.initializeForm();
+  }
+
+  private initializeForm() {
+    this.applicationForm = this.fb.group({
+      // Step 1: Personal Information
+      personal: this.fb.group({
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        dateOfBirth: ['', Validators.required],
+        placeOfBirth: ['', Validators.required],
+        nationality: ['', Validators.required],
+        maritalStatus: ['', Validators.required],
+      }),
+
+      // Step 2: Contact & Address
+      contact: this.fb.group({
+        phone: [
+          '',
+          [Validators.required, Validators.pattern(/^[+]?[0-9\s-]+$/)],
+        ],
+        email: ['', [Validators.required, Validators.email]],
+        street: ['', Validators.required],
+        houseNumber: ['', Validators.required],
+        postalCode: ['', Validators.required],
+        city: ['', Validators.required],
+      }),
+
+      // Step 3: Education
+      education: this.fb.group({
+        schoolType: ['', Validators.required],
+        schoolCompletionMonth: [''],
+        schoolCompletionYear: [''],
+        higherEducation: [''],
+        higherEducationCompletionMonth: [''],
+        higherEducationCompletionYear: [''],
+      }),
+
+      // Step 4: Languages
+      languages: this.fb.group({
+        germanLevel: ['', Validators.required],
+        englishLevel: ['', Validators.required],
+        additionalLanguages: [''],
+      }),
+
+      // Step 5: Work Experience
+      workExperience: this.fb.array([]),
+    });
+  }
+
+  get personalForm(): FormGroup {
+    return this.applicationForm.get('personal') as FormGroup;
+  }
+
+  get contactForm(): FormGroup {
+    return this.applicationForm.get('contact') as FormGroup;
+  }
+
+  get educationForm(): FormGroup {
+    return this.applicationForm.get('education') as FormGroup;
+  }
+
+  get languagesForm(): FormGroup {
+    return this.applicationForm.get('languages') as FormGroup;
+  }
 
   changeLanguage(langCode: string) {
     this.currentLanguage = langCode;
@@ -72,8 +148,24 @@ export class HomePage {
   }
 
   submitForm() {
-    console.log('Form submitted - PDF generation will be in Step 17');
-    // PDF generation will be implemented in Step 17
+    if (this.applicationForm.valid) {
+      console.log('Form Data:', this.applicationForm.value);
+      // PDF generation will be implemented in Step 17
+    } else {
+      console.log('Form is invalid');
+      this.markFormGroupTouched(this.applicationForm);
+    }
+  }
+
+  private markFormGroupTouched(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach((key) => {
+      const control = formGroup.get(key);
+      control?.markAsTouched();
+
+      if (control instanceof FormGroup) {
+        this.markFormGroupTouched(control);
+      }
+    });
   }
 
   private scrollToTop() {
