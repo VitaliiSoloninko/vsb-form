@@ -7,6 +7,10 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
+import {
+  Language,
+  LanguageSwitcherComponent,
+} from '../components/language-switcher/language-switcher.component';
 import { StepIndicatorComponent } from '../components/step-indicator/step-indicator.component';
 
 @Component({
@@ -21,6 +25,7 @@ import { StepIndicatorComponent } from '../components/step-indicator/step-indica
     IonFooter,
     IonButton,
     StepIndicatorComponent,
+    LanguageSwitcherComponent,
   ],
 })
 export class HomePage {
@@ -28,7 +33,7 @@ export class HomePage {
   currentStep = 1;
   totalSteps = 5;
 
-  languages = [
+  languages: Language[] = [
     { code: 'de', name: 'Deutsch' },
     { code: 'en', name: 'English' },
     { code: 'ru', name: 'Русский' },

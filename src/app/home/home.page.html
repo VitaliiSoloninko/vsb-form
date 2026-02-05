@@ -5,18 +5,11 @@
       <div class="logo-section">
         <h1>VSB</h1>
       </div>
-      <div class="language-switcher">
-        @for (lang of languages; track lang.code) {
-        <button
-          class="lang-btn"
-          [class.active]="currentLanguage === lang.code"
-          (click)="changeLanguage(lang.code)"
-          [title]="lang.name"
-        >
-          {{ lang.code.toUpperCase() }}
-        </button>
-        }
-      </div>
+      <app-language-switcher
+        [languages]="languages"
+        [currentLanguage]="currentLanguage"
+        (languageChange)="changeLanguage($event)"
+      />
     </div>
 
     <!-- Step Indicator -->
