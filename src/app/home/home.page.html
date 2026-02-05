@@ -19,9 +19,42 @@
 
 <ion-content>
   <div class="content-container">
-    <!-- Multi-step form will be here -->
     <div class="form-wrapper">
-      <p>Form content placeholder</p>
+      <!-- Step 1: Personal Data -->
+      @if (currentStep === 1) {
+      <div class="step-content">
+        <h2>Personal Information</h2>
+        <p>Step 1 content - Personal data fields will be added in Step 7</p>
+      </div>
+      }
+
+      <!-- Step 2: Contact & Address -->
+      @if (currentStep === 2) {
+      <div class="step-content">
+        <h2>Contact & Address</h2>
+        <p>
+          Step 2 content - Contact and address fields will be added in Step 8
+        </p>
+      </div>
+      }
+
+      <!-- Additional steps will be added later -->
+      @if (currentStep === 3) {
+      <div class="step-content">
+        <h2>Education</h2>
+        <p>Step 3 content</p>
+      </div>
+      } @if (currentStep === 4) {
+      <div class="step-content">
+        <h2>Languages</h2>
+        <p>Step 4 content</p>
+      </div>
+      } @if (currentStep === 5) {
+      <div class="step-content">
+        <h2>Work Experience</h2>
+        <p>Step 5 content</p>
+      </div>
+      }
     </div>
   </div>
 </ion-content>
@@ -29,8 +62,19 @@
 <ion-footer>
   <ion-toolbar>
     <div class="footer-container">
-      <!-- Navigation buttons will be added later -->
-      <ion-button expand="block" class="next-button"> Next </ion-button>
+      <div class="button-group">
+        @if (currentStep > 1) {
+        <ion-button expand="block" fill="outline" (click)="previousStep()">
+          Back
+        </ion-button>
+        } @if (currentStep < totalSteps) {
+        <ion-button expand="block" (click)="nextStep()"> Next </ion-button>
+        } @if (currentStep === totalSteps) {
+        <ion-button expand="block" color="success" (click)="submitForm()">
+          Create PDF
+        </ion-button>
+        }
+      </div>
     </div>
   </ion-toolbar>
 </ion-footer>

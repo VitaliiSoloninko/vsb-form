@@ -4,7 +4,6 @@ import {
   IonContent,
   IonFooter,
   IonHeader,
-  IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
 import {
@@ -20,7 +19,6 @@ import { StepIndicatorComponent } from '../components/step-indicator/step-indica
   imports: [
     IonHeader,
     IonToolbar,
-    IonTitle,
     IonContent,
     IonFooter,
     IonButton,
@@ -47,5 +45,30 @@ export class HomePage {
     this.currentLanguage = langCode;
     console.log('Language changed to:', langCode);
     // i18n will be implemented in Step 16
+  }
+
+  nextStep() {
+    if (this.currentStep < this.totalSteps) {
+      this.currentStep++;
+      this.scrollToTop();
+    }
+  }
+
+  previousStep() {
+    if (this.currentStep > 1) {
+      this.currentStep--;
+      this.scrollToTop();
+    }
+  }
+
+  submitForm() {
+    console.log('Form submitted - PDF generation will be in Step 17');
+    // PDF generation will be implemented in Step 17
+  }
+
+  private scrollToTop() {
+    // Scroll content to top when changing steps
+    const content = document.querySelector('ion-content');
+    content?.scrollToTop(300);
   }
 }
