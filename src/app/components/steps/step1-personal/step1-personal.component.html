@@ -1,5 +1,94 @@
-<div class="step-content">
+<div class="step-content" [formGroup]="formGroup()">
   <h2>Personal Information</h2>
-  <p>Personal data fields will be added in Step 7</p>
-  <!-- Form fields: Name, Surname, Date of Birth, Place of Birth, Nationality, Marital Status -->
+
+  <ion-item>
+    <ion-label position="floating">First Name *</ion-label>
+    <ion-input
+      type="text"
+      formControlName="firstName"
+      placeholder="Enter your first name"
+    ></ion-input>
+  </ion-item>
+  @if (
+    formGroup().get("firstName")?.invalid &&
+    formGroup().get("firstName")?.touched
+  ) {
+    <div class="error-message">First name is required</div>
+  }
+
+  <ion-item>
+    <ion-label position="floating">Last Name *</ion-label>
+    <ion-input
+      type="text"
+      formControlName="lastName"
+      placeholder="Enter your last name"
+    ></ion-input>
+  </ion-item>
+  @if (
+    formGroup().get("lastName")?.invalid && formGroup().get("lastName")?.touched
+  ) {
+    <div class="error-message">Last name is required</div>
+  }
+
+  <ion-item>
+    <ion-label position="floating">Date of Birth *</ion-label>
+    <ion-input
+      type="date"
+      formControlName="dateOfBirth"
+      placeholder="Select date"
+    ></ion-input>
+  </ion-item>
+  @if (
+    formGroup().get("dateOfBirth")?.invalid &&
+    formGroup().get("dateOfBirth")?.touched
+  ) {
+    <div class="error-message">Date of birth is required</div>
+  }
+
+  <ion-item>
+    <ion-label position="floating">Place of Birth *</ion-label>
+    <ion-input
+      type="text"
+      formControlName="placeOfBirth"
+      placeholder="Enter place of birth"
+    ></ion-input>
+  </ion-item>
+  @if (
+    formGroup().get("placeOfBirth")?.invalid &&
+    formGroup().get("placeOfBirth")?.touched
+  ) {
+    <div class="error-message">Place of birth is required</div>
+  }
+
+  <ion-item>
+    <ion-label position="floating">Nationality *</ion-label>
+    <ion-input
+      type="text"
+      formControlName="nationality"
+      placeholder="Enter your nationality"
+    ></ion-input>
+  </ion-item>
+  @if (
+    formGroup().get("nationality")?.invalid &&
+    formGroup().get("nationality")?.touched
+  ) {
+    <div class="error-message">Nationality is required</div>
+  }
+
+  <ion-item>
+    <ion-label position="floating">Marital Status *</ion-label>
+    <ion-select formControlName="maritalStatus" placeholder="Select status">
+      @for (status of maritalStatuses; track status.value) {
+        <ion-select-option [value]="status.value">
+          {{ status.label }}
+        </ion-select-option>
+      }
+    </ion-select>
+  </ion-item>
+  @if (
+    formGroup().get("maritalStatus")?.invalid &&
+    formGroup().get("maritalStatus")?.touched
+  ) {
+    <div class="error-message">Marital status is required</div>
+  }
 </div>
