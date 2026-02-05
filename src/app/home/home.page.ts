@@ -7,15 +7,26 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
+import { StepIndicatorComponent } from '../components/step-indicator/step-indicator.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonFooter, IonButton],
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonFooter,
+    IonButton,
+    StepIndicatorComponent,
+  ],
 })
 export class HomePage {
   currentLanguage = 'de';
+  currentStep = 1;
+  totalSteps = 5;
 
   languages = [
     { code: 'de', name: 'Deutsch' },

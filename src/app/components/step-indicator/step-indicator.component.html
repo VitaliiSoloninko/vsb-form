@@ -1,0 +1,10 @@
+<div class="step-indicator">
+  @for (step of steps; track step) {
+    <div class="step-item" [class.active]="currentStep() === step">
+      <div class="step-circle">{{ step }}</div>
+    </div>
+    @if (step < totalSteps()) {
+      <div class="step-line"></div>
+    }
+  }
+</div>
