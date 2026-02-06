@@ -20,6 +20,9 @@
       @if (formGroup().get("phone")?.errors?.["pattern"]) {
         Please enter a valid phone number
       }
+      @if (formGroup().get("phone")?.errors?.["minlength"]) {
+        Phone number must be at least 7 characters
+      }
     </div>
   }
 

@@ -18,6 +18,10 @@
     --padding-end: 16px;
     --inner-padding-end: 0;
     margin-bottom: 10px;
+    &.ion-invalid.ion-touched {
+      --border-color: var(--ion-color-danger);
+      --highlight-color-focused: var(--ion-color-danger);
+    }
   }
 
   ion-label {

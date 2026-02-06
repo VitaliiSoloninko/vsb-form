@@ -44,7 +44,13 @@
           Back
         </ion-button>
         } @if (currentStep < totalSteps) {
-        <ion-button expand="block" (click)="nextStep()"> Next </ion-button>
+        <ion-button
+          expand="block"
+          (click)="nextStep()"
+          [disabled]="!isCurrentStepValid()"
+        >
+          Next
+        </ion-button>
         } @if (currentStep === totalSteps) {
         <ion-button expand="block" color="success" (click)="submitForm()">
           Create PDF

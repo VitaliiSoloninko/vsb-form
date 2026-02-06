@@ -68,11 +68,11 @@ export class HomePage implements OnInit {
     this.applicationForm = this.fb.group({
       // Step 1: Personal Information
       personal: this.fb.group({
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
+        firstName: ['', [Validators.required, Validators.minLength(2)]],
+        lastName: ['', [Validators.required, Validators.minLength(2)]],
         dateOfBirth: ['', Validators.required],
-        placeOfBirth: ['', Validators.required],
-        nationality: ['', Validators.required],
+        placeOfBirth: ['', [Validators.required, Validators.minLength(2)]],
+        nationality: ['', [Validators.required, Validators.minLength(2)]],
         maritalStatus: ['', Validators.required],
       }),
 
@@ -80,13 +80,20 @@ export class HomePage implements OnInit {
       contact: this.fb.group({
         phone: [
           '',
-          [Validators.required, Validators.pattern(/^[+]?[0-9\s-]+$/)],
+          [
+            Validators.required,
+            Validators.pattern(/^[+]?[0-9\s-]+$/),
+            Validators.minLength(7),
+          ],
         ],
         email: ['', [Validators.required, Validators.email]],
-        street: ['', Validators.required],
+        street: ['', [Validators.required, Validators.minLength(2)]],
         houseNumber: ['', Validators.required],
-        postalCode: ['', Validators.required],
-        city: ['', Validators.required],
+        postalCode: [
+          '',
+          [Validators.required, Validators.pattern(/^[0-9]{4,6}$/)],
+        ],
+        city: ['', [Validators.required, Validators.minLength(2)]],
       }),
 
       // Step 3: Education
@@ -133,7 +140,40 @@ export class HomePage implements OnInit {
     // i18n will be implemented in Step 16
   }
 
+  getCurrentStepForm(): FormGroup | null {
+    switch (this.currentStep) {
+      case 1:
+        return this.personalForm;
+      case 2:
+        return this.contactForm;
+      case 3:
+        return this.educationForm;
+      case 4:
+        return this.languagesForm;
+      default:
+        return null;
+    }
+  }
+
+  isCurrentStepValid(): boolean {
+    const currentForm = this.getCurrentStepForm();
+    return currentForm ? currentForm.valid : true;
+  }
+
   nextStep() {
+    const currentForm = this.getCurrentStepForm();
+
+    if (currentForm) {
+      // Mark all fields as touched to show validation errors
+      this.markFormGroupTouched(currentForm);
+
+      // Only proceed if current step is valid
+      if (!currentForm.valid) {
+        console.log('Please fill in all required fields');
+        return;
+      }
+    }
+
     if (this.currentStep < this.totalSteps) {
       this.currentStep++;
       this.scrollToTop();
@@ -148,12 +188,27 @@ export class HomePage implements OnInit {
   }
 
   submitForm() {
+    // Validate all steps before submission
+    this.markFormGroupTouched(this.applicationForm);
+
     if (this.applicationForm.valid) {
       console.log('Form Data:', this.applicationForm.value);
       // PDF generation will be implemented in Step 17
     } else {
-      console.log('Form is invalid');
-      this.markFormGroupTouched(this.applicationForm);
+      console.log('Form is invalid. Please check all steps.');
+
+      // Find first invalid step and navigate to it
+      if (this.personalForm.invalid) {
+        this.currentStep = 1;
+      } else if (this.contactForm.invalid) {
+        this.currentStep = 2;
+      } else if (this.educationForm.invalid) {
+        this.currentStep = 3;
+      } else if (this.languagesForm.invalid) {
+        this.currentStep = 4;
+      }
+
+      this.scrollToTop();
     }
   }
 

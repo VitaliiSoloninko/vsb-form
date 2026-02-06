@@ -13,7 +13,14 @@
     formGroup().get("firstName")?.invalid &&
     formGroup().get("firstName")?.touched
   ) {
-    <div class="error-message">First name is required</div>
+    <div class="error-message">
+      @if (formGroup().get("firstName")?.errors?.["required"]) {
+        First name is required
+      }
+      @if (formGroup().get("firstName")?.errors?.["minlength"]) {
+        First name must be at least 2 characters
+      }
+    </div>
   }
 
   <ion-item>
@@ -27,7 +34,14 @@
   @if (
     formGroup().get("lastName")?.invalid && formGroup().get("lastName")?.touched
   ) {
-    <div class="error-message">Last name is required</div>
+    <div class="error-message">
+      @if (formGroup().get("lastName")?.errors?.["required"]) {
+        Last name is required
+      }
+      @if (formGroup().get("lastName")?.errors?.["minlength"]) {
+        Last name must be at least 2 characters
+      }
+    </div>
   }
 
   <ion-item>
