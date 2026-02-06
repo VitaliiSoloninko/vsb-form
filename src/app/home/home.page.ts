@@ -5,6 +5,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
   IonButton,
   IonContent,
@@ -58,7 +59,10 @@ export class HomePage implements OnInit {
     { code: 'ua', name: 'Українська' },
   ];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     this.initializeForm();
@@ -98,7 +102,7 @@ export class HomePage implements OnInit {
 
       // Step 3: Education
       education: this.fb.group({
-        schoolType: ['', Validators.required],
+        schoolType: [''],
         schoolCompletionMonth: [''],
         schoolCompletionYear: [''],
         higherEducation: [''],
@@ -108,8 +112,8 @@ export class HomePage implements OnInit {
 
       // Step 4: Languages
       languages: this.fb.group({
-        germanLevel: ['', Validators.required],
-        englishLevel: ['', Validators.required],
+        germanLevel: [''],
+        englishLevel: [''],
         additionalLanguages: [''],
       }),
 
@@ -193,7 +197,11 @@ export class HomePage implements OnInit {
 
     if (this.applicationForm.valid) {
       console.log('Form Data:', this.applicationForm.value);
-      // PDF generation will be implemented in Step 17
+
+      // Navigate to summary page with form data
+      this.router.navigate(['/summary'], {
+        state: { formData: this.applicationForm.value },
+      });
     } else {
       console.log('Form is invalid. Please check all steps.');
 

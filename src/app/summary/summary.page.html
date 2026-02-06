@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Application Summary</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="summary-container">
+    <h1>Application Summary</h1>
+    <p class="subtitle">Review your submitted information</p>
+
+    @if (formData) {
+    <!-- Personal Information -->
+    <div class="section">
+      <h2>Personal Information</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="label">First Name:</span>
+          <span class="value">{{ formData.personal.firstName }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Last Name:</span>
+          <span class="value">{{ formData.personal.lastName }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Date of Birth:</span>
+          <span class="value">{{ formData.personal.dateOfBirth }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Place of Birth:</span>
+          <span class="value">{{ formData.personal.placeOfBirth }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Nationality:</span>
+          <span class="value">{{ formData.personal.nationality }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Marital Status:</span>
+          <span class="value">{{ formData.personal.maritalStatus }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact & Address -->
+    <div class="section">
+      <h2>Contact & Address</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="label">Phone:</span>
+          <span class="value">{{ formData.contact.phone }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Email:</span>
+          <span class="value">{{ formData.contact.email }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Street:</span>
+          <span class="value">{{ formData.contact.street }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">House Number:</span>
+          <span class="value">{{ formData.contact.houseNumber }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Postal Code:</span>
+          <span class="value">{{ formData.contact.postalCode }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">City:</span>
+          <span class="value">{{ formData.contact.city }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <ion-button expand="block" fill="outline" (click)="backToForm()">
+        Back to Form
+      </ion-button>
+      <ion-button expand="block" color="success" (click)="downloadPDF()">
+        Download PDF
+      </ion-button>
+    </div>
+    }
+  </div>
+</ion-content>
