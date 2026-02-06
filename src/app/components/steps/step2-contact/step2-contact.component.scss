@@ -8,9 +8,40 @@
     margin-bottom: 20px;
   }
 
+  .section-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ion-color-medium-shade);
+    margin: 24px 0 12px 0;
+  }
+
   p {
     color: var(--ion-color-medium);
     margin-bottom: 16px;
+  }
+
+  ion-item {
+    --padding-start: 12px;
+    --padding-end: 12px;
+    --inner-padding-end: 0;
+    margin-bottom: 16px;
+  }
+
+  ion-label {
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  ion-input,
+  ion-select {
+    margin-top: 4px;
+  }
+
+  .error-message {
+    color: var(--ion-color-danger);
+    font-size: 12px;
+    padding: 4px 0 8px 0;
+    margin-top: -12px;
   }
 }
 

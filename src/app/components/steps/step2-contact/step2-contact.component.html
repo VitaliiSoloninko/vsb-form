@@ -1,5 +1,103 @@
-<div class="step-content">
+<div class="step-content" [formGroup]="formGroup()">
   <h2>Contact & Address</h2>
-  <p>Contact and address fields will be added in Step 8</p>
-  <!-- Form fields: Phone, Email, Street, House Number, Postal Code, City -->
+
+  <!-- Contact Section -->
+  <h3 class="section-title">Contact Information</h3>
+
+  <ion-item>
+    <ion-label position="floating">Phone *</ion-label>
+    <ion-input
+      type="tel"
+      formControlName="phone"
+      placeholder="Enter your phone number"
+    ></ion-input>
+  </ion-item>
+  @if (formGroup().get("phone")?.invalid && formGroup().get("phone")?.touched) {
+    <div class="error-message">
+      @if (formGroup().get("phone")?.errors?.["required"]) {
+        Phone number is required
+      }
+      @if (formGroup().get("phone")?.errors?.["pattern"]) {
+        Please enter a valid phone number
+      }
+    </div>
+  }
+
+  <ion-item>
+    <ion-label position="floating">Email *</ion-label>
+    <ion-input
+      type="email"
+      formControlName="email"
+      placeholder="Enter your email"
+    ></ion-input>
+  </ion-item>
+  @if (formGroup().get("email")?.invalid && formGroup().get("email")?.touched) {
+    <div class="error-message">
+      @if (formGroup().get("email")?.errors?.["required"]) {
+        Email is required
+      }
+      @if (formGroup().get("email")?.errors?.["email"]) {
+        Please enter a valid email address
+      }
+    </div>
+  }
+
+  <!-- Address Section -->
+  <h3 class="section-title">Address</h3>
+
+  <ion-item>
+    <ion-label position="floating">Street *</ion-label>
+    <ion-input
+      type="text"
+      formControlName="street"
+      placeholder="Enter street name"
+    ></ion-input>
+  </ion-item>
+  @if (
+    formGroup().get("street")?.invalid && formGroup().get("street")?.touched
+  ) {
+    <div class="error-message">Street is required</div>
+  }
+
+  <ion-item>
+    <ion-label position="floating">House Number *</ion-label>
+    <ion-input
+      type="text"
+      formControlName="houseNumber"
+      placeholder="Enter house number"
+    ></ion-input>
+  </ion-item>
+  @if (
+    formGroup().get("houseNumber")?.invalid &&
+    formGroup().get("houseNumber")?.touched
+  ) {
+    <div class="error-message">House number is required</div>
+  }
+
+  <ion-item>
+    <ion-label position="floating">Postal Code *</ion-label>
+    <ion-input
+      type="text"
+      formControlName="postalCode"
+      placeholder="Enter postal code"
+    ></ion-input>
+  </ion-item>
+  @if (
+    formGroup().get("postalCode")?.invalid &&
+    formGroup().get("postalCode")?.touched
+  ) {
+    <div class="error-message">Postal code is required</div>
+  }
+
+  <ion-item>
+    <ion-label position="floating">City *</ion-label>
+    <ion-input
+      type="text"
+      formControlName="city"
+      placeholder="Enter city name"
+    ></ion-input>
+  </ion-item>
+  @if (formGroup().get("city")?.invalid && formGroup().get("city")?.touched) {
+    <div class="error-message">City is required</div>
+  }
 </div>
