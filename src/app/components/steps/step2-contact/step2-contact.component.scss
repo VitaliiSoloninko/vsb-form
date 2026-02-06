@@ -5,7 +5,7 @@
     font-size: 20px;
     font-weight: 600;
     color: var(--ion-color-dark);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 
   .section-title {
@@ -21,10 +21,10 @@
   }
 
   ion-item {
-    --padding-start: 12px;
-    --padding-end: 12px;
+    --padding-start: 16px;
+    --padding-end: 16px;
     --inner-padding-end: 0;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
 
     &.ion-invalid.ion-touched {
       --border-color: var(--ion-color-danger);
@@ -34,12 +34,12 @@
 
   ion-label {
     font-weight: 500;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
   }
 
   ion-input,
   ion-select {
-    margin-top: 4px;
+    margin-top: 12px;
   }
 
   .error-message {
