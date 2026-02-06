@@ -1,5 +1,35 @@
-<div class="step-content">
+<div class="step-content" [formGroup]="formGroup">
   <h2>Language Skills</h2>
-  <p>Language proficiency fields will be added later</p>
-  <!-- Form fields: German level, English level, Additional languages -->
+
+  <ion-item>
+    <ion-label position="floating">German Level</ion-label>
+    <ion-select formControlName="germanLevel" placeholder="Select level">
+      @for (level of languageLevels; track level.value) {
+        <ion-select-option [value]="level.value">
+          {{ level.label }}
+        </ion-select-option>
+      }
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">English Level</ion-label>
+    <ion-select formControlName="englishLevel" placeholder="Select level">
+      @for (level of languageLevels; track level.value) {
+        <ion-select-option [value]="level.value">
+          {{ level.label }}
+        </ion-select-option>
+      }
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Additional Languages</ion-label>
+    <ion-textarea
+      formControlName="additionalLanguages"
+      placeholder="E.g., French (B2), Spanish (A1), etc."
+      [autoGrow]="true"
+      rows="3"
+    ></ion-textarea>
+  </ion-item>
 </div>

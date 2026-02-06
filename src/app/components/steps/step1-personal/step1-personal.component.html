@@ -1,4 +1,4 @@
-<div class="step-content" [formGroup]="formGroup()">
+<div class="step-content" [formGroup]="formGroup">
   <h2>Personal Information</h2>
 
   <ion-item>
@@ -10,14 +10,13 @@
     ></ion-input>
   </ion-item>
   @if (
-    formGroup().get("firstName")?.invalid &&
-    formGroup().get("firstName")?.touched
+    formGroup.get("firstName")?.invalid && formGroup.get("firstName")?.touched
   ) {
     <div class="error-message">
-      @if (formGroup().get("firstName")?.errors?.["required"]) {
+      @if (formGroup.get("firstName")?.errors?.["required"]) {
         First name is required
       }
-      @if (formGroup().get("firstName")?.errors?.["minlength"]) {
+      @if (formGroup.get("firstName")?.errors?.["minlength"]) {
         First name must be at least 2 characters
       }
     </div>
@@ -32,13 +31,13 @@
     ></ion-input>
   </ion-item>
   @if (
-    formGroup().get("lastName")?.invalid && formGroup().get("lastName")?.touched
+    formGroup.get("lastName")?.invalid && formGroup.get("lastName")?.touched
   ) {
     <div class="error-message">
-      @if (formGroup().get("lastName")?.errors?.["required"]) {
+      @if (formGroup.get("lastName")?.errors?.["required"]) {
         Last name is required
       }
-      @if (formGroup().get("lastName")?.errors?.["minlength"]) {
+      @if (formGroup.get("lastName")?.errors?.["minlength"]) {
         Last name must be at least 2 characters
       }
     </div>
@@ -53,8 +52,8 @@
     ></ion-input>
   </ion-item>
   @if (
-    formGroup().get("dateOfBirth")?.invalid &&
-    formGroup().get("dateOfBirth")?.touched
+    formGroup.get("dateOfBirth")?.invalid &&
+    formGroup.get("dateOfBirth")?.touched
   ) {
     <div class="error-message">Date of birth is required</div>
   }
@@ -68,8 +67,8 @@
     ></ion-input>
   </ion-item>
   @if (
-    formGroup().get("placeOfBirth")?.invalid &&
-    formGroup().get("placeOfBirth")?.touched
+    formGroup.get("placeOfBirth")?.invalid &&
+    formGroup.get("placeOfBirth")?.touched
   ) {
     <div class="error-message">Place of birth is required</div>
   }
@@ -83,8 +82,8 @@
     ></ion-input>
   </ion-item>
   @if (
-    formGroup().get("nationality")?.invalid &&
-    formGroup().get("nationality")?.touched
+    formGroup.get("nationality")?.invalid &&
+    formGroup.get("nationality")?.touched
   ) {
     <div class="error-message">Nationality is required</div>
   }
@@ -100,8 +99,8 @@
     </ion-select>
   </ion-item>
   @if (
-    formGroup().get("maritalStatus")?.invalid &&
-    formGroup().get("maritalStatus")?.touched
+    formGroup.get("maritalStatus")?.invalid &&
+    formGroup.get("maritalStatus")?.touched
   ) {
     <div class="error-message">Marital status is required</div>
   }

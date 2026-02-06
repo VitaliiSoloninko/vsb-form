@@ -1,10 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { Component, signal, viewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   IonButton,
@@ -23,13 +17,20 @@ import { Step2ContactComponent } from '../components/steps/step2-contact/step2-c
 import { Step3EducationComponent } from '../components/steps/step3-education/step3-education.component';
 import { Step4LanguagesComponent } from '../components/steps/step4-languages/step4-languages.component';
 import { Step5WorkExperienceComponent } from '../components/steps/step5-work-experience/step5-work-experience.component';
+import {
+  ApplicationFormData,
+  ContactData,
+  EducationData,
+  LanguagesData,
+  PersonalData,
+  WorkExperience,
+} from '../models/form-data.models';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   imports: [
-    ReactiveFormsModule,
     IonHeader,
     IonToolbar,
     IonContent,
@@ -44,12 +45,24 @@ import { Step5WorkExperienceComponent } from '../components/steps/step5-work-exp
     Step5WorkExperienceComponent,
   ],
 })
-export class HomePage implements OnInit {
-  currentLanguage = 'de';
-  currentStep = 1;
+export class HomePage {
+  currentLanguage = signal('de');
+  currentStep = signal(1);
   totalSteps = 5;
 
-  applicationForm!: FormGroup;
+  // View children references to step components
+  step1 = viewChild<Step1PersonalComponent>('step1');
+  step2 = viewChild<Step2ContactComponent>('step2');
+  step3 = viewChild<Step3EducationComponent>('step3');
+  step4 = viewChild<Step4LanguagesComponent>('step4');
+  step5 = viewChild<Step5WorkExperienceComponent>('step5');
+
+  // Form data signals
+  personalData = signal<PersonalData | null>(null);
+  contactData = signal<ContactData | null>(null);
+  educationData = signal<EducationData | null>(null);
+  languagesData = signal<LanguagesData | null>(null);
+  workExperienceData = signal<WorkExperience[]>([]);
 
   languages: Language[] = [
     { code: 'de', name: 'Deutsch' },
@@ -59,180 +72,164 @@ export class HomePage implements OnInit {
     { code: 'ua', name: 'Українська' },
   ];
 
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-  ) {}
-
-  ngOnInit() {
-    this.initializeForm();
-  }
-
-  private initializeForm() {
-    this.applicationForm = this.fb.group({
-      // Step 1: Personal Information
-      personal: this.fb.group({
-        firstName: ['', [Validators.required, Validators.minLength(2)]],
-        lastName: ['', [Validators.required, Validators.minLength(2)]],
-        dateOfBirth: ['', Validators.required],
-        placeOfBirth: ['', [Validators.required, Validators.minLength(2)]],
-        nationality: ['', [Validators.required, Validators.minLength(2)]],
-        maritalStatus: ['', Validators.required],
-      }),
-
-      // Step 2: Contact & Address
-      contact: this.fb.group({
-        phone: [
-          '',
-          [
-            Validators.required,
-            Validators.pattern(/^[+]?[0-9\s-]+$/),
-            Validators.minLength(7),
-          ],
-        ],
-        email: ['', [Validators.required, Validators.email]],
-        street: ['', [Validators.required, Validators.minLength(2)]],
-        houseNumber: ['', Validators.required],
-        postalCode: [
-          '',
-          [Validators.required, Validators.pattern(/^[0-9]{4,6}$/)],
-        ],
-        city: ['', [Validators.required, Validators.minLength(2)]],
-      }),
-
-      // Step 3: Education
-      education: this.fb.group({
-        schoolType: [''],
-        schoolCompletionMonth: [''],
-        schoolCompletionYear: [''],
-        higherEducation: [''],
-        higherEducationCompletionMonth: [''],
-        higherEducationCompletionYear: [''],
-      }),
-
-      // Step 4: Languages
-      languages: this.fb.group({
-        germanLevel: [''],
-        englishLevel: [''],
-        additionalLanguages: [''],
-      }),
-
-      // Step 5: Work Experience
-      workExperience: this.fb.array([]),
-    });
-  }
-
-  get personalForm(): FormGroup {
-    return this.applicationForm.get('personal') as FormGroup;
-  }
-
-  get contactForm(): FormGroup {
-    return this.applicationForm.get('contact') as FormGroup;
-  }
-
-  get educationForm(): FormGroup {
-    return this.applicationForm.get('education') as FormGroup;
-  }
-
-  get languagesForm(): FormGroup {
-    return this.applicationForm.get('languages') as FormGroup;
-  }
+  constructor(private router: Router) {}
 
   changeLanguage(langCode: string) {
-    this.currentLanguage = langCode;
+    this.currentLanguage.set(langCode);
     console.log('Language changed to:', langCode);
-    // i18n will be implemented in Step 16
+    // i18n will be implemented later
   }
 
-  getCurrentStepForm(): FormGroup | null {
-    switch (this.currentStep) {
-      case 1:
-        return this.personalForm;
-      case 2:
-        return this.contactForm;
-      case 3:
-        return this.educationForm;
-      case 4:
-        return this.languagesForm;
-      default:
-        return null;
-    }
+  // Handle form data updates from child components
+  onPersonalDataChange(data: PersonalData) {
+    this.personalData.set(data);
+  }
+
+  onContactDataChange(data: ContactData) {
+    this.contactData.set(data);
+  }
+
+  onEducationDataChange(data: EducationData) {
+    this.educationData.set(data);
+  }
+
+  onLanguagesDataChange(data: LanguagesData) {
+    this.languagesData.set(data);
+  }
+
+  onWorkExperienceChange(data: WorkExperience[]) {
+    this.workExperienceData.set(data);
   }
 
   isCurrentStepValid(): boolean {
-    const currentForm = this.getCurrentStepForm();
-    return currentForm ? currentForm.valid : true;
+    const step = this.currentStep();
+    switch (step) {
+      case 1:
+        return this.step1()?.isFormValid() ?? false;
+      case 2:
+        return this.step2()?.isFormValid() ?? false;
+      case 3:
+        return this.step3()?.isFormValid() ?? false;
+      case 4:
+        return this.step4()?.isFormValid() ?? false;
+      case 5:
+        return this.step5()?.isFormValid() ?? false;
+      default:
+        return true;
+    }
   }
 
   nextStep() {
-    const currentForm = this.getCurrentStepForm();
+    const currentStepComponent = this.getCurrentStepComponent();
 
-    if (currentForm) {
-      // Mark all fields as touched to show validation errors
-      this.markFormGroupTouched(currentForm);
+    if (currentStepComponent) {
+      // Mark form as touched to show validation errors
+      currentStepComponent.markAsTouched();
 
-      // Only proceed if current step is valid
-      if (!currentForm.valid) {
+      // Check if current step is valid
+      if (!currentStepComponent.isFormValid()) {
         console.log('Please fill in all required fields');
         return;
       }
     }
 
-    if (this.currentStep < this.totalSteps) {
-      this.currentStep++;
+    if (this.currentStep() < this.totalSteps) {
+      this.currentStep.update((step) => step + 1);
       this.scrollToTop();
     }
   }
 
   previousStep() {
-    if (this.currentStep > 1) {
-      this.currentStep--;
+    if (this.currentStep() > 1) {
+      this.currentStep.update((step) => step - 1);
       this.scrollToTop();
     }
   }
 
   submitForm() {
-    // Validate all steps before submission
-    this.markFormGroupTouched(this.applicationForm);
+    // Validate all steps
+    const allStepsValid = this.validateAllSteps();
 
-    if (this.applicationForm.valid) {
-      console.log('Form Data:', this.applicationForm.value);
-
-      // Navigate to summary page with form data
-      this.router.navigate(['/summary'], {
-        state: { formData: this.applicationForm.value },
-      });
-    } else {
+    if (!allStepsValid) {
       console.log('Form is invalid. Please check all steps.');
-
-      // Find first invalid step and navigate to it
-      if (this.personalForm.invalid) {
-        this.currentStep = 1;
-      } else if (this.contactForm.invalid) {
-        this.currentStep = 2;
-      } else if (this.educationForm.invalid) {
-        this.currentStep = 3;
-      } else if (this.languagesForm.invalid) {
-        this.currentStep = 4;
-      }
-
-      this.scrollToTop();
+      // Navigate to first invalid step
+      this.navigateToFirstInvalidStep();
+      return;
     }
-  }
 
-  private markFormGroupTouched(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach((key) => {
-      const control = formGroup.get(key);
-      control?.markAsTouched();
+    // Collect all form data
+    const formData: ApplicationFormData = {
+      personal: this.step1()?.getData()!,
+      contact: this.step2()?.getData()!,
+      education: this.step3()?.getData()!,
+      languages: this.step4()?.getData()!,
+      workExperience: this.step5()?.getData() ?? [],
+    };
 
-      if (control instanceof FormGroup) {
-        this.markFormGroupTouched(control);
-      }
+    console.log('Form Data:', formData);
+
+    // Navigate to summary page
+    this.router.navigate(['/summary'], {
+      state: { formData },
     });
   }
 
+  private getCurrentStepComponent():
+    | Step1PersonalComponent
+    | Step2ContactComponent
+    | Step3EducationComponent
+    | Step4LanguagesComponent
+    | Step5WorkExperienceComponent
+    | null {
+    const step = this.currentStep();
+    switch (step) {
+      case 1:
+        return this.step1() ?? null;
+      case 2:
+        return this.step2() ?? null;
+      case 3:
+        return this.step3() ?? null;
+      case 4:
+        return this.step4() ?? null;
+      case 5:
+        return this.step5() ?? null;
+      default:
+        return null;
+    }
+  }
+
+  private validateAllSteps(): boolean {
+    const steps = [
+      this.step1(),
+      this.step2(),
+      this.step3(),
+      this.step4(),
+      this.step5(),
+    ];
+
+    // Mark all as touched
+    steps.forEach((step) => step?.markAsTouched());
+
+    // Check all are valid
+    return steps.every((step) => step?.isFormValid() ?? true);
+  }
+
+  private navigateToFirstInvalidStep() {
+    if (!this.step1()?.isFormValid()) {
+      this.currentStep.set(1);
+    } else if (!this.step2()?.isFormValid()) {
+      this.currentStep.set(2);
+    } else if (!this.step3()?.isFormValid()) {
+      this.currentStep.set(3);
+    } else if (!this.step4()?.isFormValid()) {
+      this.currentStep.set(4);
+    } else if (!this.step5()?.isFormValid()) {
+      this.currentStep.set(5);
+    }
+    this.scrollToTop();
+  }
+
   private scrollToTop() {
-    // Scroll content to top when changing steps
     const content = document.querySelector('ion-content');
     content?.scrollToTop(300);
   }

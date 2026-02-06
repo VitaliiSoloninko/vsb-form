@@ -8,6 +8,20 @@
     margin-bottom: 20px;
   }
 
+  h3.section-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ion-color-primary);
+    margin: 20px 0 12px 0;
+  }
+
+  .date-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
   p {
     color: var(--ion-color-medium);
     margin-bottom: 16px;

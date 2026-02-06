@@ -7,6 +7,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
+import { ApplicationFormData } from '../models/form-data.models';
 
 @Component({
   selector: 'app-summary',
@@ -16,7 +17,7 @@ import {
   styleUrls: ['./summary.page.scss'],
 })
 export class SummaryPage implements OnInit {
-  formData: any;
+  formData: ApplicationFormData | null = null;
 
   constructor(private router: Router) {
     const navigation = this.router.getCurrentNavigation();
@@ -35,7 +36,7 @@ export class SummaryPage implements OnInit {
   }
 
   downloadPDF() {
-    console.log('PDF download will be implemented in Step 17');
-    // PDF generation will be implemented in Step 17
+    console.log('PDF download will be implemented later');
+    // PDF generation will be implemented later
   }
 }

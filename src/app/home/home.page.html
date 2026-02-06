@@ -7,29 +7,35 @@
       </div>
       <app-language-switcher
         [languages]="languages"
-        [currentLanguage]="currentLanguage"
+        [currentLanguage]="currentLanguage()"
         (languageChange)="changeLanguage($event)"
       />
     </div>
 
     <!-- Step Indicator -->
-    <app-step-indicator [currentStep]="currentStep" [totalSteps]="totalSteps" />
+    <app-step-indicator
+      [currentStep]="currentStep()"
+      [totalSteps]="totalSteps"
+    />
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="content-container">
     <div class="form-wrapper">
-      @if (currentStep === 1) {
-      <app-step1-personal [formGroup]="personalForm" />
-      } @if (currentStep === 2) {
-      <app-step2-contact [formGroup]="contactForm" />
-      } @if (currentStep === 3) {
-      <app-step3-education [formGroup]="educationForm" />
-      } @if (currentStep === 4) {
-      <app-step4-languages [formGroup]="languagesForm" />
-      } @if (currentStep === 5) {
-      <app-step5-work-experience [formGroup]="applicationForm" />
+      @if (currentStep() === 1) {
+      <app-step1-personal #step1 (formData)="onPersonalDataChange($event)" />
+      } @else if (currentStep() === 2) {
+      <app-step2-contact #step2 (formData)="onContactDataChange($event)" />
+      } @else if (currentStep() === 3) {
+      <app-step3-education #step3 (formData)="onEducationDataChange($event)" />
+      } @else if (currentStep() === 4) {
+      <app-step4-languages #step4 (formData)="onLanguagesDataChange($event)" />
+      } @else if (currentStep() === 5) {
+      <app-step5-work-experience
+        #step5
+        (formData)="onWorkExperienceChange($event)"
+      />
       }
     </div>
   </div>
@@ -39,11 +45,11 @@
   <ion-toolbar>
     <div class="footer-container">
       <div class="button-group">
-        @if (currentStep > 1) {
+        @if (currentStep() > 1) {
         <ion-button expand="block" fill="outline" (click)="previousStep()">
           Back
         </ion-button>
-        } @if (currentStep < totalSteps) {
+        } @if (currentStep() < totalSteps) {
         <ion-button
           expand="block"
           (click)="nextStep()"
@@ -51,7 +57,7 @@
         >
           Next
         </ion-button>
-        } @if (currentStep === totalSteps) {
+        } @if (currentStep() === totalSteps) {
         <ion-button expand="block" color="success" (click)="submitForm()">
           Complete
         </ion-button>
