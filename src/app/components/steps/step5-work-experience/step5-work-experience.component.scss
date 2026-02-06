@@ -5,39 +5,78 @@
     font-size: 20px;
     font-weight: 600;
     color: var(--ion-color-dark);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 
-  p {
-    color: var(--ion-color-medium);
-    margin-bottom: 16px;
-  }
+  .work-experience-card {
+    background: var(--ion-color-light);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    position: relative;
+    border: 1px solid var(--ion-color-light-shade);
 
-  .info-text {
-    font-style: italic;
-  }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
 
-  ion-item {
-    --padding-start: 16px;
-    --padding-end: 16px;
-    --inner-padding-end: 0;
-    margin-bottom: 10px;
+      h3 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--ion-color-primary);
+        margin: 0;
+      }
 
-    &.ion-invalid.ion-touched {
-      --border-color: var(--ion-color-danger);
-      --highlight-color-focused: var(--ion-color-danger);
+      ion-button {
+        margin: 0;
+        height: 32px;
+      }
+    }
+
+    .date-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 10px;
+
+      .date-group {
+        flex: 1;
+      }
+    }
+
+    ion-item {
+      --padding-start: 12px;
+      --padding-end: 12px;
+      --inner-padding-end: 0;
+      --background: var(--ion-color-light-tint);
+      margin-bottom: 12px;
+      border-radius: 8px;
+
+      &.ion-invalid.ion-touched {
+        --border-color: var(--ion-color-danger);
+        --highlight-color-focused: var(--ion-color-danger);
+      }
+    }
+
+    ion-label {
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    ion-input,
+    ion-select,
+    ion-textarea {
+      margin-top: 8px;
+      font-size: 14px;
     }
   }
 
-  ion-label {
-    font-weight: 500;
-    margin-bottom: 12px;
-  }
-
-  ion-input,
-  ion-select,
-  ion-textarea {
-    margin-top: 12px;
+  .add-button {
+    margin-top: 8px;
+    --border-radius: 8px;
+    font-weight: 600;
   }
 
   .error-message {
@@ -45,6 +84,17 @@
     font-size: 12px;
     padding: 4px 0 8px 0;
     margin-top: -12px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

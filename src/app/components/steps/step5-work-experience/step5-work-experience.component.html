@@ -1,8 +1,108 @@
-<div class="step-content">
+<div class="step-content" [formGroup]="formGroup">
   <h2>Work Experience</h2>
-  <p class="info-text">
-    Work experience section will be implemented with dynamic form arrays in the
-    next step.
-  </p>
-  <!-- Dynamic work experience entries will be added later -->
+
+  <div formArrayName="workExperiences">
+    @for (experience of workExperiences.controls; track $index) {
+      <div class="work-experience-card" [formGroupName]="$index">
+        <div class="card-header">
+          <h3>Position {{ $index + 1 }}</h3>
+          @if (workExperiences.length > 1) {
+            <ion-button
+              fill="clear"
+              color="danger"
+              size="small"
+              (click)="removeWorkExperience($index)"
+            >
+              <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+            </ion-button>
+          }
+        </div>
+
+        <div class="date-row">
+          <div class="date-group">
+            <ion-item>
+              <ion-label position="floating">Start Month</ion-label>
+              <ion-select formControlName="startMonth" placeholder="Select">
+                @for (month of months; track month.value) {
+                  <ion-select-option [value]="month.value">
+                    {{ month.label }}
+                  </ion-select-option>
+                }
+              </ion-select>
+            </ion-item>
+          </div>
+
+          <div class="date-group">
+            <ion-item>
+              <ion-label position="floating">Start Year</ion-label>
+              <ion-select formControlName="startYear" placeholder="Select">
+                @for (year of years; track year) {
+                  <ion-select-option [value]="year">
+                    {{ year }}
+                  </ion-select-option>
+                }
+              </ion-select>
+            </ion-item>
+          </div>
+        </div>
+
+        <div class="date-row">
+          <div class="date-group">
+            <ion-item>
+              <ion-label position="floating">End Month</ion-label>
+              <ion-select formControlName="endMonth" placeholder="Select">
+                @for (month of months; track month.value) {
+                  <ion-select-option [value]="month.value">
+                    {{ month.label }}
+                  </ion-select-option>
+                }
+              </ion-select>
+            </ion-item>
+          </div>
+
+          <div class="date-group">
+            <ion-item>
+              <ion-label position="floating">End Year</ion-label>
+              <ion-select formControlName="endYear" placeholder="Select">
+                @for (year of years; track year) {
+                  <ion-select-option [value]="year">
+                    {{ year }}
+                  </ion-select-option>
+                }
+              </ion-select>
+            </ion-item>
+          </div>
+        </div>
+
+        <ion-item>
+          <ion-label position="floating">Position</ion-label>
+          <ion-input
+            formControlName="position"
+            type="text"
+            placeholder="e.g., Software Developer"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Responsibilities</ion-label>
+          <ion-textarea
+            formControlName="responsibilities"
+            placeholder="Describe your main responsibilities..."
+            [autoGrow]="true"
+            rows="3"
+          ></ion-textarea>
+        </ion-item>
+      </div>
+    }
+  </div>
+
+  <ion-button
+    expand="block"
+    fill="outline"
+    (click)="addWorkExperience()"
+    class="add-button"
+  >
+    <ion-icon slot="start" name="add-outline"></ion-icon>
+    Add Another Position
+  </ion-button>
 </div>
