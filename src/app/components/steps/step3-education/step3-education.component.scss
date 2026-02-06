@@ -5,14 +5,14 @@
     font-size: 20px;
     font-weight: 600;
     color: var(--ion-color-dark);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 
   h3.section-title {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--ion-color-primary);
-    margin: 20px 0 12px 0;
+    margin: 24px 0 12px 0;
   }
 
   .date-group {
@@ -28,10 +28,12 @@
   }
 
   ion-item {
-    --padding-start: 16px;
-    --padding-end: 16px;
+    --padding-start: 12px;
+    --padding-end: 12px;
     --inner-padding-end: 0;
-    margin-bottom: 10px;
+    --background: var(--ion-color-light);
+    margin-bottom: 12px;
+    border-radius: 8px;
 
     &.ion-invalid.ion-touched {
       --border-color: var(--ion-color-danger);
@@ -41,12 +43,14 @@
 
   ion-label {
     font-weight: 500;
-    margin-bottom: 12px;
+    font-size: 14px;
+    margin-bottom: 8px;
   }
 
   ion-input,
   ion-select {
-    margin-top: 12px;
+    margin-top: 8px;
+    font-size: 14px;
   }
 
   .error-message {
