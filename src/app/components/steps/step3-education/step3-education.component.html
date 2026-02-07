@@ -18,61 +18,19 @@
       </ion-select>
     </ion-item>
 
-    <div class="date-row">
-      <div class="date-group">
-        <ion-item>
-          <ion-label position="floating">Start Month</ion-label>
-          <ion-select formControlName="schoolStartMonth" placeholder="Select">
-            @for (month of months; track month.value) {
-              <ion-select-option [value]="month.value">
-                {{ month.label }}
-              </ion-select-option>
-            }
-          </ion-select>
-        </ion-item>
+    <ion-item button="true" id="school-start-trigger">
+      <ion-label position="stacked">Start Date</ion-label>
+      <div class="date-value">
+        {{ formatDate(formGroup.get("schoolStart")?.value) }}
       </div>
+    </ion-item>
 
-      <div class="date-group">
-        <ion-item>
-          <ion-label position="floating">Start Year</ion-label>
-          <ion-select formControlName="schoolStartYear" placeholder="Select">
-            @for (year of years; track year.value) {
-              <ion-select-option [value]="year.value">
-                {{ year.label }}
-              </ion-select-option>
-            }
-          </ion-select>
-        </ion-item>
+    <ion-item button="true" id="school-end-trigger">
+      <ion-label position="stacked">End Date</ion-label>
+      <div class="date-value">
+        {{ formatDate(formGroup.get("schoolEnd")?.value) }}
       </div>
-    </div>
-
-    <div class="date-row">
-      <div class="date-group">
-        <ion-item>
-          <ion-label position="floating">End Month</ion-label>
-          <ion-select formControlName="schoolEndMonth" placeholder="Select">
-            @for (month of months; track month.value) {
-              <ion-select-option [value]="month.value">
-                {{ month.label }}
-              </ion-select-option>
-            }
-          </ion-select>
-        </ion-item>
-      </div>
-
-      <div class="date-group">
-        <ion-item>
-          <ion-label position="floating">End Year</ion-label>
-          <ion-select formControlName="schoolEndYear" placeholder="Select">
-            @for (year of years; track year.value) {
-              <ion-select-option [value]="year.value">
-                {{ year.label }}
-              </ion-select-option>
-            }
-          </ion-select>
-        </ion-item>
-      </div>
-    </div>
+    </ion-item>
   </div>
 
   <!-- Higher Education Card -->
@@ -92,72 +50,59 @@
       </ion-select>
     </ion-item>
 
-    <div class="date-row">
-      <div class="date-group">
-        <ion-item>
-          <ion-label position="floating">Start Month</ion-label>
-          <ion-select
-            formControlName="higherEducationStartMonth"
-            placeholder="Select"
-          >
-            @for (month of months; track month.value) {
-              <ion-select-option [value]="month.value">
-                {{ month.label }}
-              </ion-select-option>
-            }
-          </ion-select>
-        </ion-item>
+    <ion-item button="true" id="higher-start-trigger">
+      <ion-label position="stacked">Start Date</ion-label>
+      <div class="date-value">
+        {{ formatDate(formGroup.get("higherEducationStart")?.value) }}
       </div>
+    </ion-item>
 
-      <div class="date-group">
-        <ion-item>
-          <ion-label position="floating">Start Year</ion-label>
-          <ion-select
-            formControlName="higherEducationStartYear"
-            placeholder="Select"
-          >
-            @for (year of years; track year.value) {
-              <ion-select-option [value]="year.value">
-                {{ year.label }}
-              </ion-select-option>
-            }
-          </ion-select>
-        </ion-item>
+    <ion-item button="true" id="higher-end-trigger">
+      <ion-label position="stacked">End Date</ion-label>
+      <div class="date-value">
+        {{ formatDate(formGroup.get("higherEducationEnd")?.value) }}
       </div>
-    </div>
-
-    <div class="date-row">
-      <div class="date-group">
-        <ion-item>
-          <ion-label position="floating">End Month</ion-label>
-          <ion-select
-            formControlName="higherEducationEndMonth"
-            placeholder="Select"
-          >
-            @for (month of months; track month.value) {
-              <ion-select-option [value]="month.value">
-                {{ month.label }}
-              </ion-select-option>
-            }
-          </ion-select>
-        </ion-item>
-      </div>
-
-      <div class="date-group">
-        <ion-item>
-          <ion-label position="floating">End Year</ion-label>
-          <ion-select
-            formControlName="higherEducationEndYear"
-            placeholder="Select"
-          >
-            @for (year of years; track year.value) {
-              <ion-select-option [value]="year.value">
-                {{ year.label }}
-              </ion-select-option>
-            }
-          </ion-select>
-        </ion-item>
-      </div>
-    </div>
+    </ion-item>
   </div>
 </div>
+
+<!-- Modals for date selection -->
+<ion-modal trigger="school-start-trigger">
+  <ng-template>
+    <ion-datetime
+      presentation="month-year"
+      [value]="formGroup.get('schoolStart')?.value"
+      (ionChange)="confirmDate('schoolStart', $event)"
+    ></ion-datetime>
+  </ng-template>
+</ion-modal>
+
+<ion-modal trigger="school-end-trigger">
+  <ng-template>
+    <ion-datetime
+      presentation="month-year"
+      [value]="formGroup.get('schoolEnd')?.value"
+      (ionChange)="confirmDate('schoolEnd', $event)"
+    ></ion-datetime>
+  </ng-template>
+</ion-modal>
+
+<ion-modal trigger="higher-start-trigger">
+  <ng-template>
+    <ion-datetime
+      presentation="month-year"
+      [value]="formGroup.get('higherEducationStart')?.value"
+      (ionChange)="confirmDate('higherEducationStart', $event)"
+    ></ion-datetime>
+  </ng-template>
+</ion-modal>
+
+<ion-modal trigger="higher-end-trigger">
+  <ng-template>
+    <ion-datetime
+      presentation="month-year"
+      [value]="formGroup.get('higherEducationEnd')?.value"
+      (ionChange)="confirmDate('higherEducationEnd', $event)"
+    ></ion-datetime>
+  </ng-template>
+</ion-modal>

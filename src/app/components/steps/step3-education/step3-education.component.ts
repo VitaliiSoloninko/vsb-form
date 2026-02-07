@@ -8,8 +8,10 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
+  IonDatetime,
   IonItem,
   IonLabel,
+  IonModal,
   IonSelect,
   IonSelectOption,
 } from '@ionic/angular/standalone';
@@ -19,7 +21,15 @@ import { FormDataService } from '../../../services/form-data.service';
 @Component({
   selector: 'app-step3-education',
   standalone: true,
-  imports: [ReactiveFormsModule, IonItem, IonLabel, IonSelect, IonSelectOption],
+  imports: [
+    ReactiveFormsModule,
+    IonItem,
+    IonLabel,
+    IonSelect,
+    IonSelectOption,
+    IonDatetime,
+    IonModal,
+  ],
   templateUrl: './step3-education.component.html',
   styleUrls: ['./step3-education.component.scss'],
 })
@@ -45,26 +55,6 @@ export class Step3EducationComponent implements OnInit {
     { value: 'master', label: 'Master' },
   ];
 
-  months = [
-    { value: '01', label: 'January' },
-    { value: '02', label: 'February' },
-    { value: '03', label: 'March' },
-    { value: '04', label: 'April' },
-    { value: '05', label: 'May' },
-    { value: '06', label: 'June' },
-    { value: '07', label: 'July' },
-    { value: '08', label: 'August' },
-    { value: '09', label: 'September' },
-    { value: '10', label: 'October' },
-    { value: '11', label: 'November' },
-    { value: '12', label: 'December' },
-  ];
-
-  years = Array.from({ length: 50 }, (_, i) => {
-    const year = new Date().getFullYear() - i;
-    return { value: year.toString(), label: year.toString() };
-  });
-
   constructor(private formDataService: FormDataService) {
     effect(() => {
       if (this.formGroup) {
@@ -89,15 +79,11 @@ export class Step3EducationComponent implements OnInit {
   private initializeForm() {
     this.formGroup = this.fb.group({
       schoolType: [''],
-      schoolStartMonth: [''],
-      schoolStartYear: [''],
-      schoolEndMonth: [''],
-      schoolEndYear: [''],
+      schoolStart: [''],
+      schoolEnd: [''],
       higherEducation: [''],
-      higherEducationStartMonth: [''],
-      higherEducationStartYear: [''],
-      higherEducationEndMonth: [''],
-      higherEducationEndYear: [''],
+      higherEducationStart: [''],
+      higherEducationEnd: [''],
     });
   }
 
@@ -129,5 +115,19 @@ export class Step3EducationComponent implements OnInit {
 
   isFormValid(): boolean {
     return this.formGroup.valid;
+  }
+
+  // Format date for display
+  formatDate(dateString: string): string {
+    if (!dateString) return 'Select date';
+    const [year, month] = dateString.split('-');
+    const date = new Date(parseInt(year), parseInt(month) - 1);
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+  }
+
+  // Confirm date selection from modal
+  confirmDate(field: string, event: any) {
+    const value = event.detail.value;
+    this.formGroup.patchValue({ [field]: value });
   }
 }

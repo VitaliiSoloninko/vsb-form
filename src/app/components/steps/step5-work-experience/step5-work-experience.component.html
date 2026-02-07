@@ -18,61 +18,19 @@
           }
         </div>
 
-        <div class="date-row">
-          <div class="date-group">
-            <ion-item>
-              <ion-label position="floating">Start Month</ion-label>
-              <ion-select formControlName="startMonth" placeholder="Select">
-                @for (month of months; track month.value) {
-                  <ion-select-option [value]="month.value">
-                    {{ month.label }}
-                  </ion-select-option>
-                }
-              </ion-select>
-            </ion-item>
+        <ion-item button="true" [id]="'work-start-' + $index">
+          <ion-label position="stacked">Start Date</ion-label>
+          <div class="date-value">
+            {{ formatDate(experience.get("start")?.value) }}
           </div>
+        </ion-item>
 
-          <div class="date-group">
-            <ion-item>
-              <ion-label position="floating">Start Year</ion-label>
-              <ion-select formControlName="startYear" placeholder="Select">
-                @for (year of years; track year) {
-                  <ion-select-option [value]="year">
-                    {{ year }}
-                  </ion-select-option>
-                }
-              </ion-select>
-            </ion-item>
+        <ion-item button="true" [id]="'work-end-' + $index">
+          <ion-label position="stacked">End Date</ion-label>
+          <div class="date-value">
+            {{ formatDate(experience.get("end")?.value) }}
           </div>
-        </div>
-
-        <div class="date-row">
-          <div class="date-group">
-            <ion-item>
-              <ion-label position="floating">End Month</ion-label>
-              <ion-select formControlName="endMonth" placeholder="Select">
-                @for (month of months; track month.value) {
-                  <ion-select-option [value]="month.value">
-                    {{ month.label }}
-                  </ion-select-option>
-                }
-              </ion-select>
-            </ion-item>
-          </div>
-
-          <div class="date-group">
-            <ion-item>
-              <ion-label position="floating">End Year</ion-label>
-              <ion-select formControlName="endYear" placeholder="Select">
-                @for (year of years; track year) {
-                  <ion-select-option [value]="year">
-                    {{ year }}
-                  </ion-select-option>
-                }
-              </ion-select>
-            </ion-item>
-          </div>
-        </div>
+        </ion-item>
 
         <ion-item>
           <ion-label position="floating">Position</ion-label>
@@ -92,6 +50,27 @@
             rows="3"
           ></ion-textarea>
         </ion-item>
+
+        <!-- Modals for this experience -->
+        <ion-modal [trigger]="'work-start-' + $index">
+          <ng-template>
+            <ion-datetime
+              presentation="month-year"
+              [value]="experience.get('start')?.value"
+              (ionChange)="confirmDate($index, 'start', $event)"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+
+        <ion-modal [trigger]="'work-end-' + $index">
+          <ng-template>
+            <ion-datetime
+              presentation="month-year"
+              [value]="experience.get('end')?.value"
+              (ionChange)="confirmDate($index, 'end', $event)"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
       </div>
     }
   </div>

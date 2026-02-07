@@ -113,12 +113,10 @@
           </div>
           <div class="info-item">
             <span class="label">Period:</span>
-            <span class="value"
-              >{{ formData()!.education.schoolStartMonth }}/{{
-              formData()!.education.schoolStartYear }} - {{
-              formData()!.education.schoolEndMonth }}/{{
-              formData()!.education.schoolEndYear }}</span
-            >
+            <span class="value">
+              {{ formatDate(formData()!.education.schoolStart) }} - {{
+              formatDate(formData()!.education.schoolEnd) }}
+            </span>
           </div>
         </div>
       </div>
@@ -136,12 +134,10 @@
           </div>
           <div class="info-item">
             <span class="label">Period:</span>
-            <span class="value"
-              >{{ formData()!.education.higherEducationStartMonth }}/{{
-              formData()!.education.higherEducationStartYear }} - {{
-              formData()!.education.higherEducationEndMonth }}/{{
-              formData()!.education.higherEducationEndYear }}</span
-            >
+            <span class="value">
+              {{ formatDate(formData()!.education.higherEducationStart) }} - {{
+              formatDate(formData()!.education.higherEducationEnd) }}
+            </span>
           </div>
         </div>
       </div>
@@ -156,8 +152,7 @@
       <div class="experience-card">
         <h3>{{ experience.position }}</h3>
         <div class="experience-period">
-          {{ experience.startMonth }}/{{ experience.startYear }} - {{
-          experience.endMonth }}/{{ experience.endYear }}
+          {{ formatDate(experience.start) }} - {{ formatDate(experience.end) }}
         </div>
         <div class="experience-responsibilities">
           <strong>Responsibilities:</strong>

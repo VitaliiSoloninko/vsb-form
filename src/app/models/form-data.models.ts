@@ -18,15 +18,11 @@ export interface ContactData {
 
 export interface EducationData {
   schoolType: string;
-  schoolStartMonth: string;
-  schoolStartYear: string;
-  schoolEndMonth: string;
-  schoolEndYear: string;
+  schoolStart: string;
+  schoolEnd: string;
   higherEducation: string;
-  higherEducationStartMonth: string;
-  higherEducationStartYear: string;
-  higherEducationEndMonth: string;
-  higherEducationEndYear: string;
+  higherEducationStart: string;
+  higherEducationEnd: string;
 }
 
 export interface LanguagesData {
@@ -36,10 +32,8 @@ export interface LanguagesData {
 }
 
 export interface WorkExperience {
-  startMonth: string;
-  startYear: string;
-  endMonth: string;
-  endYear: string;
+  start: string;
+  end: string;
   position: string;
   responsibilities: string;
 }

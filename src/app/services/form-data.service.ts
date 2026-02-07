@@ -134,15 +134,11 @@ export class FormDataService {
   private getEmptyEducation(): EducationData {
     return {
       schoolType: '',
-      schoolStartMonth: '',
-      schoolStartYear: '',
-      schoolEndMonth: '',
-      schoolEndYear: '',
+      schoolStart: '',
+      schoolEnd: '',
       higherEducation: '',
-      higherEducationStartMonth: '',
-      higherEducationStartYear: '',
-      higherEducationEndMonth: '',
-      higherEducationEndYear: '',
+      higherEducationStart: '',
+      higherEducationEnd: '',
     };
   }
 

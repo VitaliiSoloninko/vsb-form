@@ -26,6 +26,14 @@ export class SummaryPage {
     private formDataService: FormDataService,
   ) {}
 
+  // Format date from "2024-01" to "January 2024"
+  formatDate(dateString: string): string {
+    if (!dateString) return '';
+    const [year, month] = dateString.split('-');
+    const date = new Date(parseInt(year), parseInt(month) - 1);
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+  }
+
   backToForm() {
     this.router.navigate(['/home']);
   }

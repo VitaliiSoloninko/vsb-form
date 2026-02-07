@@ -65,6 +65,13 @@
       margin-top: 8px;
       font-size: 14px;
     }
+
+    .date-value {
+      padding: 12px 0;
+      font-size: 16px;
+      color: var(--ion-color-dark);
+      width: 100%;
+    }
   }
 }
 
@@ -76,5 +83,19 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+ion-modal {
+  --width: 90%;
+  --max-width: 400px;
+  --height: auto;
+  --border-radius: 16px;
+
+  ion-datetime {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
   }
 }

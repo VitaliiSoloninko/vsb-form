@@ -15,12 +15,12 @@ import {
 } from '@angular/forms';
 import {
   IonButton,
+  IonDatetime,
   IonIcon,
   IonInput,
   IonItem,
   IonLabel,
-  IonSelect,
-  IonSelectOption,
+  IonModal,
   IonTextarea,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
@@ -36,11 +36,11 @@ import { FormDataService } from '../../../services/form-data.service';
     IonItem,
     IonLabel,
     IonInput,
-    IonSelect,
-    IonSelectOption,
     IonTextarea,
     IonButton,
     IonIcon,
+    IonDatetime,
+    IonModal,
   ],
   templateUrl: './step5-work-experience.component.html',
   styleUrls: ['./step5-work-experience.component.scss'],
@@ -55,31 +55,8 @@ export class Step5WorkExperienceComponent implements OnInit {
   formGroup!: FormGroup;
   isValid = computed(() => this.formGroup?.valid ?? false);
 
-  months = [
-    { value: '01', label: 'January' },
-    { value: '02', label: 'February' },
-    { value: '03', label: 'March' },
-    { value: '04', label: 'April' },
-    { value: '05', label: 'May' },
-    { value: '06', label: 'June' },
-    { value: '07', label: 'July' },
-    { value: '08', label: 'August' },
-    { value: '09', label: 'September' },
-    { value: '10', label: 'October' },
-    { value: '11', label: 'November' },
-    { value: '12', label: 'December' },
-  ];
-
-  years: string[] = [];
-
   constructor(private formDataService: FormDataService) {
     addIcons({ addOutline, trashOutline });
-
-    // Generate years from current year down to 50 years ago
-    const currentYear = new Date().getFullYear();
-    for (let i = currentYear; i >= currentYear - 50; i--) {
-      this.years.push(i.toString());
-    }
 
     effect(() => {
       if (this.formGroup) {
@@ -116,10 +93,8 @@ export class Step5WorkExperienceComponent implements OnInit {
 
   createWorkExperienceGroup(): FormGroup {
     return this.fb.group({
-      startMonth: ['', Validators.required],
-      startYear: ['', Validators.required],
-      endMonth: ['', Validators.required],
-      endYear: ['', Validators.required],
+      start: ['', Validators.required],
+      end: ['', Validators.required],
       position: ['', Validators.required],
       responsibilities: ['', Validators.required],
     });
@@ -180,5 +155,20 @@ export class Step5WorkExperienceComponent implements OnInit {
 
   isFormValid(): boolean {
     return this.formGroup.valid;
+  }
+
+  // Format date for display
+  formatDate(dateString: string): string {
+    if (!dateString) return 'Select date';
+    const [year, month] = dateString.split('-');
+    const date = new Date(parseInt(year), parseInt(month) - 1);
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+  }
+
+  // Confirm date selection from modal
+  confirmDate(index: number, field: string, event: any) {
+    const value = event.detail.value;
+    const group = this.workExperiences.at(index) as FormGroup;
+    group.patchValue({ [field]: value });
   }
 }
