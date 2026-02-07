@@ -67,42 +67,62 @@
 </div>
 
 <!-- Modals for date selection -->
-<ion-modal trigger="school-start-trigger">
+<ion-modal trigger="school-start-trigger" #schoolStartModal>
   <ng-template>
-    <ion-datetime
-      presentation="month-year"
-      [value]="formGroup.get('schoolStart')?.value"
-      (ionChange)="confirmDate('schoolStart', $event)"
-    ></ion-datetime>
+    <div class="modal-content">
+      <ion-datetime
+        presentation="month-year"
+        [value]="formGroup.get('schoolStart')?.value"
+        (ionChange)="confirmDate('schoolStart', $event)"
+      ></ion-datetime>
+      <ion-button expand="block" (click)="schoolStartModal.dismiss()">
+        OK
+      </ion-button>
+    </div>
   </ng-template>
 </ion-modal>
 
-<ion-modal trigger="school-end-trigger">
+<ion-modal trigger="school-end-trigger" #schoolEndModal>
   <ng-template>
-    <ion-datetime
-      presentation="month-year"
-      [value]="formGroup.get('schoolEnd')?.value"
-      (ionChange)="confirmDate('schoolEnd', $event)"
-    ></ion-datetime>
+    <div class="modal-content">
+      <ion-datetime
+        presentation="month-year"
+        [value]="formGroup.get('schoolEnd')?.value"
+        (ionChange)="confirmDate('schoolEnd', $event)"
+      ></ion-datetime>
+      <ion-button expand="block" (click)="schoolEndModal.dismiss()">
+        OK
+      </ion-button>
+    </div>
   </ng-template>
 </ion-modal>
 
-<ion-modal trigger="higher-start-trigger">
+<ion-modal trigger="higher-start-trigger" #higherStartModal>
   <ng-template>
-    <ion-datetime
-      presentation="month-year"
-      [value]="formGroup.get('higherEducationStart')?.value"
-      (ionChange)="confirmDate('higherEducationStart', $event)"
-    ></ion-datetime>
+    <div class="modal-content">
+      <ion-datetime
+        presentation="month-year"
+        [value]="formGroup.get('higherEducationStart')?.value"
+        (ionChange)="confirmDate('higherEducationStart', $event)"
+      ></ion-datetime>
+      <ion-button expand="block" (click)="higherStartModal.dismiss()">
+        OK
+      </ion-button>
+    </div>
   </ng-template>
 </ion-modal>
 
-<ion-modal trigger="higher-end-trigger">
+<ion-modal trigger="higher-end-trigger" #higherEndModal>
   <ng-template>
-    <ion-datetime
-      presentation="month-year"
-      [value]="formGroup.get('higherEducationEnd')?.value"
-      (ionChange)="confirmDate('higherEducationEnd', $event)"
-    ></ion-datetime>
+    <div class="modal-content">
+      <ion-datetime
+        presentation="month-year"
+        [value]="formGroup.get('higherEducationEnd')?.value"
+        (ionChange)="confirmDate('higherEducationEnd', $event)"
+      ></ion-datetime>
+      <ion-button expand="block" (click)="higherEndModal.dismiss()">
+        OK
+      </ion-button>
+    </div>
   </ng-template>
 </ion-modal>

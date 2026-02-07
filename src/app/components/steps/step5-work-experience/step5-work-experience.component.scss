@@ -106,15 +106,25 @@
 }
 
 ion-modal {
-  --width: 90%;
-  --max-width: 400px;
+  --width: 85%;
+  --max-width: 320px;
   --height: auto;
   --border-radius: 16px;
 
-  ion-datetime {
+  .modal-content {
+    padding: 16px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 20px;
+  }
+
+  ion-datetime {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  ion-button {
+    width: 100%;
+    margin-top: 12px;
   }
 }

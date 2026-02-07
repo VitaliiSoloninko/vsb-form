@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
+  IonButton,
   IonDatetime,
   IonItem,
   IonLabel,
@@ -29,6 +30,7 @@ import { FormDataService } from '../../../services/form-data.service';
     IonSelectOption,
     IonDatetime,
     IonModal,
+    IonButton,
   ],
   templateUrl: './step3-education.component.html',
   styleUrls: ['./step3-education.component.scss'],
