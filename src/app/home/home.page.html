@@ -5,11 +5,13 @@
       <div class="logo-section">
         <h1>VSB</h1>
       </div>
-      <app-language-switcher
-        [languages]="languages"
-        [currentLanguage]="currentLanguage()"
-        (languageChange)="changeLanguage($event)"
-      />
+      <div class="language-section">
+        <app-language-switcher
+          [languages]="languages"
+          [currentLanguage]="currentLanguage()"
+          (languageChange)="changeLanguage($event)"
+        />
+      </div>
     </div>
 
     <!-- Step Indicator -->
