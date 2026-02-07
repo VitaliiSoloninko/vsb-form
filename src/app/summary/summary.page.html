@@ -104,41 +104,29 @@
       <h2>Education</h2>
 
       <!-- School Education -->
-      <div class="education-subsection">
+      <div class="experience-card">
         <h3>School Education</h3>
-        <div class="info-grid">
-          <div class="info-item">
-            <span class="label">School Type:</span>
-            <span class="value">{{ formData()!.education.schoolType }}</span>
-          </div>
-          <div class="info-item">
-            <span class="label">Period:</span>
-            <span class="value">
-              {{ formatDate(formData()!.education.schoolStart) }} - {{
-              formatDate(formData()!.education.schoolEnd) }}
-            </span>
-          </div>
+        <div class="experience-period">
+          {{ formatDate(formData()!.education.schoolStart) }} - {{
+          formatDate(formData()!.education.schoolEnd) }}
+        </div>
+        <div class="experience-responsibilities">
+          <strong>School Type:</strong>
+          <p>{{ formData()!.education.schoolType }}</p>
         </div>
       </div>
 
       <!-- Higher Education -->
       @if (formData()!.education.higherEducation) {
-      <div class="education-subsection">
+      <div class="experience-card">
         <h3>Higher Education</h3>
-        <div class="info-grid">
-          <div class="info-item">
-            <span class="label">Degree:</span>
-            <span class="value"
-              >{{ formData()!.education.higherEducation }}</span
-            >
-          </div>
-          <div class="info-item">
-            <span class="label">Period:</span>
-            <span class="value">
-              {{ formatDate(formData()!.education.higherEducationStart) }} - {{
-              formatDate(formData()!.education.higherEducationEnd) }}
-            </span>
-          </div>
+        <div class="experience-period">
+          {{ formatDate(formData()!.education.higherEducationStart) }} - {{
+          formatDate(formData()!.education.higherEducationEnd) }}
+        </div>
+        <div class="experience-responsibilities">
+          <strong>Degree:</strong>
+          <p>{{ formData()!.education.higherEducation }}</p>
         </div>
       </div>
       }
