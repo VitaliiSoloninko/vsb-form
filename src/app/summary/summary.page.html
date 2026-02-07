@@ -1,41 +1,41 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Application Summary</ion-title>
+    <ion-title>Bewerbungszusammenfassung</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="summary-container">
-    <h1>Application Summary</h1>
-    <p class="subtitle">Review your submitted information</p>
+    <h1>Bewerbungszusammenfassung</h1>
+    <p class="subtitle">Überprüfen Sie Ihre eingereichten Informationen</p>
 
     @if (formData()) {
     <!-- Personal Information -->
     <div class="section">
-      <h2>Personal Information</h2>
+      <h2>Persönliche Informationen</h2>
       <div class="info-grid">
         <div class="info-item">
-          <span class="label">First Name:</span>
+          <span class="label">Vorname:</span>
           <span class="value">{{ formData()!.personal.firstName }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Last Name:</span>
+          <span class="label">Nachname:</span>
           <span class="value">{{ formData()!.personal.lastName }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Date of Birth:</span>
+          <span class="label">Geburtsdatum:</span>
           <span class="value">{{ formData()!.personal.dateOfBirth }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Place of Birth:</span>
+          <span class="label">Geburtsort:</span>
           <span class="value">{{ formData()!.personal.placeOfBirth }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Nationality:</span>
+          <span class="label">Nationalität:</span>
           <span class="value">{{ formData()!.personal.nationality }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Marital Status:</span>
+          <span class="label">Familienstand:</span>
           <span class="value">{{ formData()!.personal.maritalStatus }}</span>
         </div>
       </div>
@@ -43,30 +43,30 @@
 
     <!-- Contact & Address -->
     <div class="section">
-      <h2>Contact & Address</h2>
+      <h2>Kontakt & Adresse</h2>
       <div class="info-grid">
         <div class="info-item">
-          <span class="label">Phone:</span>
+          <span class="label">Telefon:</span>
           <span class="value">{{ formData()!.contact.phone }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Email:</span>
+          <span class="label">E-Mail:</span>
           <span class="value">{{ formData()!.contact.email }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Street:</span>
+          <span class="label">Straße:</span>
           <span class="value">{{ formData()!.contact.street }}</span>
         </div>
         <div class="info-item">
-          <span class="label">House Number:</span>
+          <span class="label">Hausnummer:</span>
           <span class="value">{{ formData()!.contact.houseNumber }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Postal Code:</span>
+          <span class="label">Postleitzahl:</span>
           <span class="value">{{ formData()!.contact.postalCode }}</span>
         </div>
         <div class="info-item">
-          <span class="label">City:</span>
+          <span class="label">Stadt:</span>
           <span class="value">{{ formData()!.contact.city }}</span>
         </div>
       </div>
@@ -74,23 +74,23 @@
 
     <!-- Languages -->
     <div class="section">
-      <h2>Language Skills</h2>
+      <h2>Sprachkenntnisse</h2>
       <div class="info-grid">
         <div class="info-item">
-          <span class="label">German Level:</span>
+          <span class="label">Deutschniveau:</span>
           <span class="value"
-            >{{ formData()!.languages.germanLevel || 'Not specified' }}</span
+            >{{ formData()!.languages.germanLevel || 'Nicht angegeben' }}</span
           >
         </div>
         <div class="info-item">
-          <span class="label">English Level:</span>
+          <span class="label">Englischniveau:</span>
           <span class="value"
-            >{{ formData()!.languages.englishLevel || 'Not specified' }}</span
+            >{{ formData()!.languages.englishLevel || 'Nicht angegeben' }}</span
           >
         </div>
         @if (formData()!.languages.additionalLanguages) {
         <div class="info-item full-width">
-          <span class="label">Additional Languages:</span>
+          <span class="label">Zusätzliche Sprachen:</span>
           <span class="value"
             >{{ formData()!.languages.additionalLanguages }}</span
           >
@@ -101,17 +101,17 @@
 
     <!-- Education -->
     <div class="section">
-      <h2>Education</h2>
+      <h2>Bildung</h2>
 
       <!-- School Education -->
       <div class="experience-card">
-        <h3>School Education</h3>
+        <h3>Schulbildung</h3>
         <div class="experience-period">
           {{ formatDate(formData()!.education.schoolStart) }} - {{
           formatDate(formData()!.education.schoolEnd) }}
         </div>
         <div class="experience-responsibilities">
-          <strong>School Type:</strong>
+          <strong>Schultyp:</strong>
           <p>{{ formData()!.education.schoolType }}</p>
         </div>
       </div>
@@ -119,13 +119,13 @@
       <!-- Higher Education -->
       @if (formData()!.education.higherEducation) {
       <div class="experience-card">
-        <h3>Higher Education</h3>
+        <h3>Hochschulbildung</h3>
         <div class="experience-period">
           {{ formatDate(formData()!.education.higherEducationStart) }} - {{
           formatDate(formData()!.education.higherEducationEnd) }}
         </div>
         <div class="experience-responsibilities">
-          <strong>Degree:</strong>
+          <strong>Abschluss:</strong>
           <p>{{ formData()!.education.higherEducation }}</p>
         </div>
       </div>
@@ -134,7 +134,7 @@
 
     <!-- Work Experience -->
     <div class="section">
-      <h2>Work Experience</h2>
+      <h2>Berufserfahrung</h2>
       @if (formData()!.workExperience && formData()!.workExperience.length > 0)
       { @for (experience of formData()!.workExperience; track $index) {
       <div class="experience-card">
@@ -143,22 +143,22 @@
           {{ formatDate(experience.start) }} - {{ formatDate(experience.end) }}
         </div>
         <div class="experience-responsibilities">
-          <strong>Responsibilities:</strong>
+          <strong>Verantwortlichkeiten:</strong>
           <p>{{ experience.responsibilities }}</p>
         </div>
       </div>
       } } @else {
-      <p class="no-data">No work experience added</p>
+      <p class="no-data">Keine Berufserfahrung hinzugefügt</p>
       }
     </div>
 
     <!-- Action Buttons -->
     <div class="action-buttons">
       <ion-button expand="block" fill="outline" (click)="backToForm()">
-        Back to Form
+        Zurück zum Formular
       </ion-button>
       <ion-button expand="block" color="success" (click)="downloadPDF()">
-        Download PDF
+        PDF herunterladen
       </ion-button>
       <ion-button
         expand="block"
@@ -166,16 +166,16 @@
         fill="outline"
         (click)="clearForm()"
       >
-        Clear All Data
+        Alle Daten löschen
       </ion-button>
     </div>
     } @else {
     <!-- No data available -->
     <div class="no-data-container">
-      <h2>No Data Available</h2>
-      <p>Please fill out the form first.</p>
+      <h2>Keine Daten verfügbar</h2>
+      <p>Bitte füllen Sie zuerst das Formular aus.</p>
       <ion-button expand="block" (click)="backToForm()">
-        Go to Form
+        Zum Formular gehen
       </ion-button>
     </div>
     }

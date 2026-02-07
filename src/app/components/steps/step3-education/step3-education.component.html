@@ -1,15 +1,15 @@
 <div class="step-content" [formGroup]="formGroup">
-  <h2>Education</h2>
+  <h2>Bildung</h2>
 
   <!-- School Education Card -->
   <div class="education-card">
     <div class="card-header">
-      <h3>School Education</h3>
+      <h3>Schulbildung</h3>
     </div>
 
     <ion-item>
-      <ion-label position="floating">School Type</ion-label>
-      <ion-select formControlName="schoolType" placeholder="Select school type">
+      <ion-label position="floating">Schultyp</ion-label>
+      <ion-select formControlName="schoolType" placeholder="Schultyp auswählen">
         @for (type of schoolTypes; track type.value) {
           <ion-select-option [value]="type.value">
             {{ type.label }}
@@ -19,14 +19,14 @@
     </ion-item>
 
     <ion-item button="true" id="school-start-trigger">
-      <ion-label position="stacked">Start Date</ion-label>
+      <ion-label position="stacked">Startdatum</ion-label>
       <div class="date-value">
         {{ formatDate(formGroup.get("schoolStart")?.value) }}
       </div>
     </ion-item>
 
     <ion-item button="true" id="school-end-trigger">
-      <ion-label position="stacked">End Date</ion-label>
+      <ion-label position="stacked">Enddatum</ion-label>
       <div class="date-value">
         {{ formatDate(formGroup.get("schoolEnd")?.value) }}
       </div>
@@ -36,12 +36,15 @@
   <!-- Higher Education Card -->
   <div class="education-card">
     <div class="card-header">
-      <h3>Higher Education</h3>
+      <h3>Hochschulbildung</h3>
     </div>
 
     <ion-item>
-      <ion-label position="floating">Degree</ion-label>
-      <ion-select formControlName="higherEducation" placeholder="Select degree">
+      <ion-label position="floating">Abschluss</ion-label>
+      <ion-select
+        formControlName="higherEducation"
+        placeholder="Abschluss auswählen"
+      >
         @for (edu of higherEducationTypes; track edu.value) {
           <ion-select-option [value]="edu.value">
             {{ edu.label }}
@@ -51,14 +54,14 @@
     </ion-item>
 
     <ion-item button="true" id="higher-start-trigger">
-      <ion-label position="stacked">Start Date</ion-label>
+      <ion-label position="stacked">Startdatum</ion-label>
       <div class="date-value">
         {{ formatDate(formGroup.get("higherEducationStart")?.value) }}
       </div>
     </ion-item>
 
     <ion-item button="true" id="higher-end-trigger">
-      <ion-label position="stacked">End Date</ion-label>
+      <ion-label position="stacked">Enddatum</ion-label>
       <div class="date-value">
         {{ formatDate(formGroup.get("higherEducationEnd")?.value) }}
       </div>

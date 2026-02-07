@@ -1,103 +1,103 @@
 <div class="step-content" [formGroup]="formGroup">
-  <h2>Contact & Address</h2>
+  <h2>Kontakt & Adresse</h2>
 
   <!-- Contact Section -->
-  <h3 class="section-title">Contact Information</h3>
+  <h3 class="section-title">Kontaktinformationen</h3>
 
   <ion-item>
-    <ion-label position="floating">Phone *</ion-label>
+    <ion-label position="floating">Telefon *</ion-label>
     <ion-input
       type="tel"
       formControlName="phone"
-      placeholder="Enter your phone number"
+      placeholder="Geben Sie Ihre Telefonnummer ein"
     ></ion-input>
   </ion-item>
   @if (formGroup.get("phone")?.invalid && formGroup.get("phone")?.touched) {
     <div class="error-message">
       @if (formGroup.get("phone")?.errors?.["required"]) {
-        Phone number is required
+        Telefonnummer ist erforderlich
       }
       @if (formGroup.get("phone")?.errors?.["pattern"]) {
-        Please enter a valid phone number
+        Bitte geben Sie eine gültige Telefonnummer ein
       }
       @if (formGroup.get("phone")?.errors?.["minlength"]) {
-        Phone number must be at least 7 characters
+        Telefonnummer muss mindestens 7 Zeichen lang sein
       }
     </div>
   }
 
   <ion-item>
-    <ion-label position="floating">Email *</ion-label>
+    <ion-label position="floating">E-Mail *</ion-label>
     <ion-input
       type="email"
       formControlName="email"
-      placeholder="Enter your email"
+      placeholder="Geben Sie Ihre E-Mail ein"
     ></ion-input>
   </ion-item>
   @if (formGroup.get("email")?.invalid && formGroup.get("email")?.touched) {
     <div class="error-message">
       @if (formGroup.get("email")?.errors?.["required"]) {
-        Email is required
+        E-Mail ist erforderlich
       }
       @if (formGroup.get("email")?.errors?.["email"]) {
-        Please enter a valid email address
+        Bitte geben Sie eine gültige E-Mail-Adresse ein
       }
     </div>
   }
 
   <!-- Address Section -->
-  <h3 class="section-title">Address</h3>
+  <h3 class="section-title">Adresse</h3>
 
   <ion-item>
-    <ion-label position="floating">Street *</ion-label>
+    <ion-label position="floating">Straße *</ion-label>
     <ion-input
       type="text"
       formControlName="street"
-      placeholder="Enter street name"
+      placeholder="Geben Sie den Straßennamen ein"
     ></ion-input>
   </ion-item>
   @if (formGroup.get("street")?.invalid && formGroup.get("street")?.touched) {
-    <div class="error-message">Street is required</div>
+    <div class="error-message">Straße ist erforderlich</div>
   }
 
   <ion-item>
-    <ion-label position="floating">House Number *</ion-label>
+    <ion-label position="floating">Hausnummer *</ion-label>
     <ion-input
       type="text"
       formControlName="houseNumber"
-      placeholder="Enter house number"
+      placeholder="Geben Sie die Hausnummer ein"
     ></ion-input>
   </ion-item>
   @if (
     formGroup.get("houseNumber")?.invalid &&
     formGroup.get("houseNumber")?.touched
   ) {
-    <div class="error-message">House number is required</div>
+    <div class="error-message">Hausnummer ist erforderlich</div>
   }
 
   <ion-item>
-    <ion-label position="floating">Postal Code *</ion-label>
+    <ion-label position="floating">Postleitzahl *</ion-label>
     <ion-input
       type="text"
       formControlName="postalCode"
-      placeholder="Enter postal code"
+      placeholder="Geben Sie die Postleitzahl ein"
     ></ion-input>
   </ion-item>
   @if (
     formGroup.get("postalCode")?.invalid && formGroup.get("postalCode")?.touched
   ) {
-    <div class="error-message">Postal code is required</div>
+    <div class="error-message">Postleitzahl ist erforderlich</div>
   }
 
   <ion-item>
-    <ion-label position="floating">City *</ion-label>
+    <ion-label position="floating">Stadt *</ion-label>
     <ion-input
       type="text"
       formControlName="city"
-      placeholder="Enter city name"
+      placeholder="Geben Sie den Stadtnamen ein"
     ></ion-input>
   </ion-item>
   @if (formGroup.get("city")?.invalid && formGroup.get("city")?.touched) {
-    <div class="error-message">City is required</div>
+    <div class="error-message">Stadt ist erforderlich</div>
   }
 </div>

@@ -1,12 +1,12 @@
 <div class="step-content" [formGroup]="formGroup">
-  <h2>Personal Information</h2>
+  <h2>Persönliche Informationen</h2>
 
   <ion-item>
-    <ion-label position="floating">First Name *</ion-label>
+    <ion-label position="floating">Vorname *</ion-label>
     <ion-input
       type="text"
       formControlName="firstName"
-      placeholder="Enter your first name"
+      placeholder="Geben Sie Ihren Vornamen ein"
     ></ion-input>
   </ion-item>
   @if (
@@ -14,20 +14,20 @@
   ) {
     <div class="error-message">
       @if (formGroup.get("firstName")?.errors?.["required"]) {
-        First name is required
+        Vorname ist erforderlich
       }
       @if (formGroup.get("firstName")?.errors?.["minlength"]) {
-        First name must be at least 2 characters
+        Vorname muss mindestens 2 Zeichen lang sein
       }
     </div>
   }
 
   <ion-item>
-    <ion-label position="floating">Last Name *</ion-label>
+    <ion-label position="floating">Nachname *</ion-label>
     <ion-input
       type="text"
       formControlName="lastName"
-      placeholder="Enter your last name"
+      placeholder="Geben Sie Ihren Nachnamen ein"
     ></ion-input>
   </ion-item>
   @if (
@@ -35,62 +35,62 @@
   ) {
     <div class="error-message">
       @if (formGroup.get("lastName")?.errors?.["required"]) {
-        Last name is required
+        Nachname ist erforderlich
       }
       @if (formGroup.get("lastName")?.errors?.["minlength"]) {
-        Last name must be at least 2 characters
+        Nachname muss mindestens 2 Zeichen lang sein
       }
     </div>
   }
 
   <ion-item>
-    <ion-label position="floating">Date of Birth *</ion-label>
+    <ion-label position="floating">Geburtsdatum *</ion-label>
     <ion-input
       type="date"
       formControlName="dateOfBirth"
-      placeholder="Select date"
+      placeholder="Datum auswählen"
     ></ion-input>
   </ion-item>
   @if (
     formGroup.get("dateOfBirth")?.invalid &&
     formGroup.get("dateOfBirth")?.touched
   ) {
-    <div class="error-message">Date of birth is required</div>
+    <div class="error-message">Geburtsdatum ist erforderlich</div>
   }
 
   <ion-item>
-    <ion-label position="floating">Place of Birth *</ion-label>
+    <ion-label position="floating">Geburtsort *</ion-label>
     <ion-input
       type="text"
       formControlName="placeOfBirth"
-      placeholder="Enter place of birth"
+      placeholder="Geben Sie den Geburtsort ein"
     ></ion-input>
   </ion-item>
   @if (
     formGroup.get("placeOfBirth")?.invalid &&
     formGroup.get("placeOfBirth")?.touched
   ) {
-    <div class="error-message">Place of birth is required</div>
+    <div class="error-message">Geburtsort ist erforderlich</div>
   }
 
   <ion-item>
-    <ion-label position="floating">Nationality *</ion-label>
+    <ion-label position="floating">Nationalität *</ion-label>
     <ion-input
       type="text"
       formControlName="nationality"
-      placeholder="Enter your nationality"
+      placeholder="Geben Sie Ihre Nationalität ein"
     ></ion-input>
   </ion-item>
   @if (
     formGroup.get("nationality")?.invalid &&
     formGroup.get("nationality")?.touched
   ) {
-    <div class="error-message">Nationality is required</div>
+    <div class="error-message">Nationalität ist erforderlich</div>
   }
 
   <ion-item>
-    <ion-label position="floating">Marital Status *</ion-label>
-    <ion-select formControlName="maritalStatus" placeholder="Select status">
+    <ion-label position="floating">Familienstand *</ion-label>
+    <ion-select formControlName="maritalStatus" placeholder="Status auswählen">
       @for (status of maritalStatuses; track status.value) {
         <ion-select-option [value]="status.value">
           {{ status.label }}

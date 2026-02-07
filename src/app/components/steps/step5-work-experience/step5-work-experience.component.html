@@ -1,5 +1,5 @@
 <div class="step-content" [formGroup]="formGroup">
-  <h2>Work Experience</h2>
+  <h2>Berufserfahrung</h2>
 
   <div formArrayName="workExperiences">
     @for (experience of workExperiences.controls; track $index) {
@@ -19,14 +19,14 @@
         </div>
 
         <ion-item button="true" [id]="'work-start-' + $index">
-          <ion-label position="stacked">Start Date</ion-label>
+          <ion-label position="stacked">Startdatum</ion-label>
           <div class="date-value">
             {{ formatDate(experience.get("start")?.value) }}
           </div>
         </ion-item>
 
         <ion-item button="true" [id]="'work-end-' + $index">
-          <ion-label position="stacked">End Date</ion-label>
+          <ion-label position="stacked">Enddatum</ion-label>
           <div class="date-value">
             {{ formatDate(experience.get("end")?.value) }}
           </div>
@@ -37,15 +37,15 @@
           <ion-input
             formControlName="position"
             type="text"
-            placeholder="e.g., Software Developer"
+            placeholder="z.B. Softwareentwickler"
           ></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating">Responsibilities</ion-label>
+          <ion-label position="floating">Verantwortlichkeiten</ion-label>
           <ion-textarea
             formControlName="responsibilities"
-            placeholder="Describe your main responsibilities..."
+            placeholder="Beschreiben Sie Ihre Hauptaufgaben..."
             [autoGrow]="true"
             rows="3"
           ></ion-textarea>
@@ -74,6 +74,6 @@
     class="add-button"
   >
     <ion-icon slot="start" name="add-outline"></ion-icon>
-    Add Another Position
+    Weitere Position hinzufügen
   </ion-button>
 </div>

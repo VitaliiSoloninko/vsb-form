@@ -49,7 +49,7 @@
       <div class="button-group">
         @if (currentStep() > 1) {
         <ion-button expand="block" fill="outline" (click)="previousStep()">
-          Back
+          Zurück
         </ion-button>
         } @if (currentStep() < totalSteps) {
         <ion-button
@@ -57,11 +57,11 @@
           (click)="nextStep()"
           [disabled]="!isCurrentStepValid()"
         >
-          Next
+          Weiter
         </ion-button>
         } @if (currentStep() === totalSteps) {
         <ion-button expand="block" color="success" (click)="submitForm()">
-          Complete
+          Abschließen
         </ion-button>
         }
       </div>

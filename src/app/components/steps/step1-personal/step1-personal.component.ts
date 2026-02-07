@@ -51,9 +51,9 @@ export class Step1PersonalComponent implements OnInit {
   isValid = computed(() => this.formGroup?.valid ?? false);
 
   maritalStatuses = [
-    { value: 'single', label: 'Single' },
-    { value: 'married', label: 'Married' },
-    { value: 'divorced', label: 'Divorced' },
+    { value: 'single', label: 'Ledig' },
+    { value: 'married', label: 'Verheiratet' },
+    { value: 'divorced', label: 'Geschieden' },
   ];
 
   constructor(private formDataService: FormDataService) {

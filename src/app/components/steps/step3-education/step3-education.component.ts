@@ -42,13 +42,13 @@ export class Step3EducationComponent implements OnInit {
   isValid = computed(() => this.formGroup?.valid ?? false);
 
   schoolTypes = [
-    { value: '9classes', label: '9 Classes' },
-    { value: '10classes', label: '10 Classes' },
+    { value: '9classes', label: '9 Klassen' },
+    { value: '10classes', label: '10 Klassen' },
     { value: 'gymnasium', label: 'Gymnasium' },
   ];
 
   higherEducationTypes = [
-    { value: '', label: 'None' },
+    { value: '', label: 'Keine' },
     { value: 'bachelor', label: 'Bachelor' },
     { value: 'master', label: 'Master' },
   ];
