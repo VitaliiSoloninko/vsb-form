@@ -18,13 +18,13 @@ import { Step3EducationComponent } from '../components/steps/step3-education/ste
 import { Step4LanguagesComponent } from '../components/steps/step4-languages/step4-languages.component';
 import { Step5WorkExperienceComponent } from '../components/steps/step5-work-experience/step5-work-experience.component';
 import {
-  ApplicationFormData,
   ContactData,
   EducationData,
   LanguagesData,
   PersonalData,
   WorkExperience,
 } from '../models/form-data.models';
+import { FormDataService } from '../services/form-data.service';
 
 @Component({
   selector: 'app-home',
@@ -57,13 +57,6 @@ export class HomePage {
   step4 = viewChild<Step4LanguagesComponent>('step4');
   step5 = viewChild<Step5WorkExperienceComponent>('step5');
 
-  // Form data signals
-  personalData = signal<PersonalData | null>(null);
-  contactData = signal<ContactData | null>(null);
-  educationData = signal<EducationData | null>(null);
-  languagesData = signal<LanguagesData | null>(null);
-  workExperienceData = signal<WorkExperience[]>([]);
-
   languages: Language[] = [
     { code: 'de', name: 'Deutsch' },
     { code: 'en', name: 'English' },
@@ -72,7 +65,10 @@ export class HomePage {
     { code: 'ua', name: 'Українська' },
   ];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private formDataService: FormDataService,
+  ) {}
 
   changeLanguage(langCode: string) {
     this.currentLanguage.set(langCode);
@@ -82,23 +78,23 @@ export class HomePage {
 
   // Handle form data updates from child components
   onPersonalDataChange(data: PersonalData) {
-    this.personalData.set(data);
+    this.formDataService.updatePersonal(data);
   }
 
   onContactDataChange(data: ContactData) {
-    this.contactData.set(data);
+    this.formDataService.updateContact(data);
   }
 
   onEducationDataChange(data: EducationData) {
-    this.educationData.set(data);
+    this.formDataService.updateEducation(data);
   }
 
   onLanguagesDataChange(data: LanguagesData) {
-    this.languagesData.set(data);
+    this.formDataService.updateLanguages(data);
   }
 
   onWorkExperienceChange(data: WorkExperience[]) {
-    this.workExperienceData.set(data);
+    this.formDataService.updateWorkExperience(data);
   }
 
   isCurrentStepValid(): boolean {
@@ -147,31 +143,33 @@ export class HomePage {
   }
 
   submitForm() {
-    // Validate all steps
-    const allStepsValid = this.validateAllSteps();
+    console.log('=== SUBMIT FORM STARTED ===');
+    console.log('Current step:', this.currentStep());
 
-    if (!allStepsValid) {
-      console.log('Form is invalid. Please check all steps.');
-      // Navigate to first invalid step
+    // Validate only required steps (1 and 2)
+    const requiredStepsValid = this.validateRequiredSteps();
+    console.log('Required steps valid:', requiredStepsValid);
+
+    if (!requiredStepsValid) {
+      console.log('❌ Required steps are invalid. Please check steps 1 and 2.');
+      // Navigate to first invalid required step
       this.navigateToFirstInvalidStep();
       return;
     }
 
     // Collect all form data
-    const formData: ApplicationFormData = {
-      personal: this.step1()?.getData()!,
-      contact: this.step2()?.getData()!,
-      education: this.step3()?.getData()!,
-      languages: this.step4()?.getData()!,
-      workExperience: this.step5()?.getData() ?? [],
-    };
+    const formData = this.formDataService.allFormData();
+    console.log('Form data from service:', formData);
 
-    console.log('Form Data:', formData);
+    if (!formData) {
+      console.log('❌ Form data is incomplete');
+      return;
+    }
+
+    console.log('✅ Form Data valid, navigating to summary:', formData);
 
     // Navigate to summary page
-    this.router.navigate(['/summary'], {
-      state: { formData },
-    });
+    this.router.navigate(['/summary']);
   }
 
   private getCurrentStepComponent():
@@ -214,17 +212,76 @@ export class HomePage {
     return steps.every((step) => step?.isFormValid() ?? true);
   }
 
+  private validateRequiredSteps(): boolean {
+    console.log('--- Validating required steps ---');
+
+    // Check data from service instead of components
+    const personalData = this.formDataService.personalData();
+    const contactData = this.formDataService.contactData();
+
+    console.log('Personal data from service:', personalData);
+    console.log('Contact data from service:', contactData);
+
+    // Check if required data exists and is not empty
+    if (!personalData || !contactData) {
+      console.log('❌ Required data missing');
+      return false;
+    }
+
+    // Validate personal data
+    const personalValid =
+      !!personalData.firstName &&
+      !!personalData.lastName &&
+      !!personalData.dateOfBirth &&
+      !!personalData.placeOfBirth &&
+      !!personalData.nationality &&
+      !!personalData.maritalStatus;
+
+    // Validate contact data
+    const contactValid =
+      !!contactData.phone &&
+      !!contactData.email &&
+      !!contactData.street &&
+      !!contactData.houseNumber &&
+      !!contactData.postalCode &&
+      !!contactData.city;
+
+    console.log('Personal data valid:', personalValid);
+    console.log('Contact data valid:', contactValid);
+
+    if (!personalValid || !contactValid) {
+      console.log('❌ Required data incomplete');
+      return false;
+    }
+
+    return true;
+  }
+
   private navigateToFirstInvalidStep() {
-    if (!this.step1()?.isFormValid()) {
+    // Navigate to first required step if data is missing
+    const personalData = this.formDataService.personalData();
+    const contactData = this.formDataService.contactData();
+
+    if (
+      !personalData ||
+      !personalData.firstName ||
+      !personalData.lastName ||
+      !personalData.dateOfBirth ||
+      !personalData.placeOfBirth ||
+      !personalData.nationality ||
+      !personalData.maritalStatus
+    ) {
       this.currentStep.set(1);
-    } else if (!this.step2()?.isFormValid()) {
+    } else if (
+      !contactData ||
+      !contactData.phone ||
+      !contactData.email ||
+      !contactData.street ||
+      !contactData.houseNumber ||
+      !contactData.postalCode ||
+      !contactData.city
+    ) {
       this.currentStep.set(2);
-    } else if (!this.step3()?.isFormValid()) {
-      this.currentStep.set(3);
-    } else if (!this.step4()?.isFormValid()) {
-      this.currentStep.set(4);
-    } else if (!this.step5()?.isFormValid()) {
-      this.currentStep.set(5);
     }
     this.scrollToTop();
   }

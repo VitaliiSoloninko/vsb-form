@@ -15,6 +15,7 @@ import {
   IonTextarea,
 } from '@ionic/angular/standalone';
 import { LanguagesData } from '../../../models/form-data.models';
+import { FormDataService } from '../../../services/form-data.service';
 
 @Component({
   selector: 'app-step4-languages',
@@ -50,7 +51,7 @@ export class Step4LanguagesComponent implements OnInit {
     { value: 'C2', label: 'C2 - Proficient' },
   ];
 
-  constructor() {
+  constructor(private formDataService: FormDataService) {
     effect(() => {
       if (this.formGroup) {
         this.formValid.emit(this.formGroup.valid);
@@ -60,7 +61,15 @@ export class Step4LanguagesComponent implements OnInit {
 
   ngOnInit() {
     this.initializeForm();
+    this.loadSavedData();
     this.setupFormListeners();
+  }
+
+  private loadSavedData() {
+    const savedData = this.formDataService.languagesData();
+    if (savedData) {
+      this.formGroup.patchValue(savedData);
+    }
   }
 
   private initializeForm() {

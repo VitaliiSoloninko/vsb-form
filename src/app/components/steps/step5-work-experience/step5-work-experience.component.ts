@@ -26,6 +26,7 @@ import {
 import { addIcons } from 'ionicons';
 import { addOutline, trashOutline } from 'ionicons/icons';
 import { WorkExperience } from '../../../models/form-data.models';
+import { FormDataService } from '../../../services/form-data.service';
 
 @Component({
   selector: 'app-step5-work-experience',
@@ -71,7 +72,7 @@ export class Step5WorkExperienceComponent implements OnInit {
 
   years: string[] = [];
 
-  constructor() {
+  constructor(private formDataService: FormDataService) {
     addIcons({ addOutline, trashOutline });
 
     // Generate years from current year down to 50 years ago
@@ -89,7 +90,15 @@ export class Step5WorkExperienceComponent implements OnInit {
 
   ngOnInit() {
     this.initializeForm();
+    this.loadSavedData();
     this.setupFormListeners();
+  }
+
+  private loadSavedData() {
+    const savedData = this.formDataService.workExperienceData();
+    if (savedData && savedData.length > 0) {
+      this.setData(savedData);
+    }
   }
 
   private initializeForm() {

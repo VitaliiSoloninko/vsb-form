@@ -20,6 +20,7 @@ import {
   IonSelectOption,
 } from '@ionic/angular/standalone';
 import { PersonalData } from '../../../models/form-data.models';
+import { FormDataService } from '../../../services/form-data.service';
 
 @Component({
   selector: 'app-step1-personal',
@@ -55,7 +56,7 @@ export class Step1PersonalComponent implements OnInit {
     { value: 'divorced', label: 'Divorced' },
   ];
 
-  constructor() {
+  constructor(private formDataService: FormDataService) {
     // Effect to emit form validity changes
     effect(() => {
       if (this.formGroup) {
@@ -66,6 +67,7 @@ export class Step1PersonalComponent implements OnInit {
 
   ngOnInit() {
     this.initializeForm();
+    this.loadSavedData();
     this.setupFormListeners();
   }
 
@@ -78,6 +80,13 @@ export class Step1PersonalComponent implements OnInit {
       nationality: ['', [Validators.required, Validators.minLength(2)]],
       maritalStatus: ['', Validators.required],
     });
+  }
+
+  private loadSavedData() {
+    const savedData = this.formDataService.personalData();
+    if (savedData) {
+      this.formGroup.patchValue(savedData);
+    }
   }
 
   private setupFormListeners() {

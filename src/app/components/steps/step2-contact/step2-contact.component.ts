@@ -14,6 +14,7 @@ import {
 } from '@angular/forms';
 import { IonInput, IonItem, IonLabel } from '@ionic/angular/standalone';
 import { ContactData } from '../../../models/form-data.models';
+import { FormDataService } from '../../../services/form-data.service';
 
 @Component({
   selector: 'app-step2-contact',
@@ -36,7 +37,7 @@ export class Step2ContactComponent implements OnInit {
   // Computed signal for form validity
   isValid = computed(() => this.formGroup?.valid ?? false);
 
-  constructor() {
+  constructor(private formDataService: FormDataService) {
     // Effect to emit form validity changes
     effect(() => {
       if (this.formGroup) {
@@ -47,7 +48,15 @@ export class Step2ContactComponent implements OnInit {
 
   ngOnInit() {
     this.initializeForm();
+    this.loadSavedData();
     this.setupFormListeners();
+  }
+
+  private loadSavedData() {
+    const savedData = this.formDataService.contactData();
+    if (savedData) {
+      this.formGroup.patchValue(savedData);
+    }
   }
 
   private initializeForm() {

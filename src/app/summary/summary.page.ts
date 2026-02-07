@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   IonButton,
@@ -7,7 +7,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
-import { ApplicationFormData } from '../models/form-data.models';
+import { FormDataService } from '../services/form-data.service';
 
 @Component({
   selector: 'app-summary',
@@ -16,20 +16,15 @@ import { ApplicationFormData } from '../models/form-data.models';
   templateUrl: './summary.page.html',
   styleUrls: ['./summary.page.scss'],
 })
-export class SummaryPage implements OnInit {
-  formData: ApplicationFormData | null = null;
+export class SummaryPage {
+  // Get form data from service
+  formData = this.formDataService.allFormData;
+  isFormComplete = this.formDataService.isFormComplete;
 
-  constructor(private router: Router) {
-    const navigation = this.router.getCurrentNavigation();
-    this.formData = navigation?.extras?.state?.['formData'];
-  }
-
-  ngOnInit() {
-    if (!this.formData) {
-      // If no form data, redirect back to home
-      this.router.navigate(['/home']);
-    }
-  }
+  constructor(
+    private router: Router,
+    private formDataService: FormDataService,
+  ) {}
 
   backToForm() {
     this.router.navigate(['/home']);
@@ -38,5 +33,12 @@ export class SummaryPage implements OnInit {
   downloadPDF() {
     console.log('PDF download will be implemented later');
     // PDF generation will be implemented later
+  }
+
+  clearForm() {
+    if (confirm('Вы уверены, что хотите очистить все данные формы?')) {
+      this.formDataService.clearFormData();
+      this.router.navigate(['/home']);
+    }
   }
 }

@@ -14,6 +14,7 @@ import {
   IonSelectOption,
 } from '@ionic/angular/standalone';
 import { EducationData } from '../../../models/form-data.models';
+import { FormDataService } from '../../../services/form-data.service';
 
 @Component({
   selector: 'app-step3-education',
@@ -64,7 +65,7 @@ export class Step3EducationComponent implements OnInit {
     return { value: year.toString(), label: year.toString() };
   });
 
-  constructor() {
+  constructor(private formDataService: FormDataService) {
     effect(() => {
       if (this.formGroup) {
         this.formValid.emit(this.formGroup.valid);
@@ -74,7 +75,15 @@ export class Step3EducationComponent implements OnInit {
 
   ngOnInit() {
     this.initializeForm();
+    this.loadSavedData();
     this.setupFormListeners();
+  }
+
+  private loadSavedData() {
+    const savedData = this.formDataService.educationData();
+    if (savedData) {
+      this.formGroup.patchValue(savedData);
+    }
   }
 
   private initializeForm() {
