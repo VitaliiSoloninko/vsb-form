@@ -15,16 +15,15 @@ import {
 } from '@angular/forms';
 import {
   IonButton,
-  IonDatetime,
   IonIcon,
   IonInput,
   IonItem,
   IonLabel,
-  IonModal,
   IonTextarea,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { addOutline, trashOutline } from 'ionicons/icons';
+import { DatePickerModalComponent } from '../../../components/date-picker-modal/date-picker-modal.component';
 import { WorkExperience } from '../../../models/form-data.models';
 import { FormDataService } from '../../../services/form-data.service';
 
@@ -39,8 +38,7 @@ import { FormDataService } from '../../../services/form-data.service';
     IonTextarea,
     IonButton,
     IonIcon,
-    IonDatetime,
-    IonModal,
+    DatePickerModalComponent,
   ],
   templateUrl: './step5-work-experience.component.html',
   styleUrls: ['./step5-work-experience.component.scss'],
@@ -165,9 +163,8 @@ export class Step5WorkExperienceComponent implements OnInit {
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
   }
 
-  // Confirm date selection from modal
-  confirmDate(index: number, field: string, event: any) {
-    const value = event.detail.value;
+  // Handle date change from modal
+  onDateChange(index: number, field: string, value: string) {
     const group = this.workExperiences.at(index) as FormGroup;
     group.patchValue({ [field]: value });
   }

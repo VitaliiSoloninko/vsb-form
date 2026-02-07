@@ -8,14 +8,12 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
-  IonButton,
-  IonDatetime,
   IonItem,
   IonLabel,
-  IonModal,
   IonSelect,
   IonSelectOption,
 } from '@ionic/angular/standalone';
+import { DatePickerModalComponent } from '../../../components/date-picker-modal/date-picker-modal.component';
 import { EducationData } from '../../../models/form-data.models';
 import { FormDataService } from '../../../services/form-data.service';
 
@@ -28,9 +26,7 @@ import { FormDataService } from '../../../services/form-data.service';
     IonLabel,
     IonSelect,
     IonSelectOption,
-    IonDatetime,
-    IonModal,
-    IonButton,
+    DatePickerModalComponent,
   ],
   templateUrl: './step3-education.component.html',
   styleUrls: ['./step3-education.component.scss'],
@@ -127,9 +123,8 @@ export class Step3EducationComponent implements OnInit {
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
   }
 
-  // Confirm date selection from modal
-  confirmDate(field: string, event: any) {
-    const value = event.detail.value;
+  // Handle date change from modal
+  onDateChange(field: string, value: string) {
     this.formGroup.patchValue({ [field]: value });
   }
 }

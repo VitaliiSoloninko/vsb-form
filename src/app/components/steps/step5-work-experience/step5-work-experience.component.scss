@@ -104,27 +104,3 @@
     transform: translateY(0);
   }
 }
-
-ion-modal {
-  --width: 85%;
-  --max-width: 320px;
-  --height: auto;
-  --border-radius: 16px;
-
-  .modal-content {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  ion-datetime {
-    width: 100%;
-    max-width: 280px;
-  }
-
-  ion-button {
-    width: 100%;
-    margin-top: 12px;
-  }
-}

@@ -1,0 +1,12 @@
+<ion-modal [trigger]="triggerId()" #modal>
+  <ng-template>
+    <div class="modal-content">
+      <ion-datetime
+        presentation="month-year"
+        [value]="value()"
+        (ionChange)="onDateChange($event)"
+      ></ion-datetime>
+      <ion-button expand="block" (click)="confirmDate()"> OK </ion-button>
+    </div>
+  </ng-template>
+</ion-modal>

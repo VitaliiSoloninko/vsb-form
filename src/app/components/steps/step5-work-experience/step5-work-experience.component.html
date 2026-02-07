@@ -51,36 +51,18 @@
           ></ion-textarea>
         </ion-item>
 
-        <!-- Modals for this experience -->
-        <ion-modal [trigger]="'work-start-' + $index" #workStartModal>
-          <ng-template>
-            <div class="modal-content">
-              <ion-datetime
-                presentation="month-year"
-                [value]="experience.get('start')?.value"
-                (ionChange)="confirmDate($index, 'start', $event)"
-              ></ion-datetime>
-              <ion-button expand="block" (click)="workStartModal.dismiss()">
-                OK
-              </ion-button>
-            </div>
-          </ng-template>
-        </ion-modal>
+        <!-- Date Picker Modals for this experience -->
+        <app-date-picker-modal
+          [triggerId]="'work-start-' + $index"
+          [value]="experience.get('start')?.value"
+          (dateChange)="onDateChange($index, 'start', $event)"
+        />
 
-        <ion-modal [trigger]="'work-end-' + $index" #workEndModal>
-          <ng-template>
-            <div class="modal-content">
-              <ion-datetime
-                presentation="month-year"
-                [value]="experience.get('end')?.value"
-                (ionChange)="confirmDate($index, 'end', $event)"
-              ></ion-datetime>
-              <ion-button expand="block" (click)="workEndModal.dismiss()">
-                OK
-              </ion-button>
-            </div>
-          </ng-template>
-        </ion-modal>
+        <app-date-picker-modal
+          [triggerId]="'work-end-' + $index"
+          [value]="experience.get('end')?.value"
+          (dateChange)="onDateChange($index, 'end', $event)"
+        />
       </div>
     }
   </div>
