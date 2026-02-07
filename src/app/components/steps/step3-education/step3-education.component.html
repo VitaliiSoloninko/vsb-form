@@ -1,83 +1,163 @@
 <div class="step-content" [formGroup]="formGroup">
   <h2>Education</h2>
 
-  <h3 class="section-title">School Education</h3>
+  <!-- School Education Card -->
+  <div class="education-card">
+    <div class="card-header">
+      <h3>School Education</h3>
+    </div>
 
-  <ion-item>
-    <ion-label position="floating">School Type</ion-label>
-    <ion-select formControlName="schoolType" placeholder="Select school type">
-      @for (type of schoolTypes; track type.value) {
-        <ion-select-option [value]="type.value">
-          {{ type.label }}
-        </ion-select-option>
-      }
-    </ion-select>
-  </ion-item>
-
-  <div class="date-group">
     <ion-item>
-      <ion-label position="floating">Completion Month</ion-label>
-      <ion-select formControlName="schoolCompletionMonth" placeholder="Month">
-        @for (month of months; track month.value) {
-          <ion-select-option [value]="month.value">
-            {{ month.label }}
+      <ion-label position="floating">School Type</ion-label>
+      <ion-select formControlName="schoolType" placeholder="Select school type">
+        @for (type of schoolTypes; track type.value) {
+          <ion-select-option [value]="type.value">
+            {{ type.label }}
           </ion-select-option>
         }
       </ion-select>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Completion Year</ion-label>
-      <ion-select formControlName="schoolCompletionYear" placeholder="Year">
-        @for (year of years; track year.value) {
-          <ion-select-option [value]="year.value">
-            {{ year.label }}
-          </ion-select-option>
-        }
-      </ion-select>
-    </ion-item>
+    <div class="date-row">
+      <div class="date-group">
+        <ion-item>
+          <ion-label position="floating">Start Month</ion-label>
+          <ion-select formControlName="schoolStartMonth" placeholder="Select">
+            @for (month of months; track month.value) {
+              <ion-select-option [value]="month.value">
+                {{ month.label }}
+              </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+      </div>
+
+      <div class="date-group">
+        <ion-item>
+          <ion-label position="floating">Start Year</ion-label>
+          <ion-select formControlName="schoolStartYear" placeholder="Select">
+            @for (year of years; track year.value) {
+              <ion-select-option [value]="year.value">
+                {{ year.label }}
+              </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+      </div>
+    </div>
+
+    <div class="date-row">
+      <div class="date-group">
+        <ion-item>
+          <ion-label position="floating">End Month</ion-label>
+          <ion-select formControlName="schoolEndMonth" placeholder="Select">
+            @for (month of months; track month.value) {
+              <ion-select-option [value]="month.value">
+                {{ month.label }}
+              </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+      </div>
+
+      <div class="date-group">
+        <ion-item>
+          <ion-label position="floating">End Year</ion-label>
+          <ion-select formControlName="schoolEndYear" placeholder="Select">
+            @for (year of years; track year.value) {
+              <ion-select-option [value]="year.value">
+                {{ year.label }}
+              </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+      </div>
+    </div>
   </div>
 
-  <h3 class="section-title">Higher Education</h3>
+  <!-- Higher Education Card -->
+  <div class="education-card">
+    <div class="card-header">
+      <h3>Higher Education</h3>
+    </div>
 
-  <ion-item>
-    <ion-label position="floating">Degree</ion-label>
-    <ion-select formControlName="higherEducation" placeholder="Select degree">
-      @for (edu of higherEducationTypes; track edu.value) {
-        <ion-select-option [value]="edu.value">
-          {{ edu.label }}
-        </ion-select-option>
-      }
-    </ion-select>
-  </ion-item>
-
-  <div class="date-group">
     <ion-item>
-      <ion-label position="floating">Completion Month</ion-label>
-      <ion-select
-        formControlName="higherEducationCompletionMonth"
-        placeholder="Month"
-      >
-        @for (month of months; track month.value) {
-          <ion-select-option [value]="month.value">
-            {{ month.label }}
+      <ion-label position="floating">Degree</ion-label>
+      <ion-select formControlName="higherEducation" placeholder="Select degree">
+        @for (edu of higherEducationTypes; track edu.value) {
+          <ion-select-option [value]="edu.value">
+            {{ edu.label }}
           </ion-select-option>
         }
       </ion-select>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Completion Year</ion-label>
-      <ion-select
-        formControlName="higherEducationCompletionYear"
-        placeholder="Year"
-      >
-        @for (year of years; track year.value) {
-          <ion-select-option [value]="year.value">
-            {{ year.label }}
-          </ion-select-option>
-        }
-      </ion-select>
-    </ion-item>
+    <div class="date-row">
+      <div class="date-group">
+        <ion-item>
+          <ion-label position="floating">Start Month</ion-label>
+          <ion-select
+            formControlName="higherEducationStartMonth"
+            placeholder="Select"
+          >
+            @for (month of months; track month.value) {
+              <ion-select-option [value]="month.value">
+                {{ month.label }}
+              </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+      </div>
+
+      <div class="date-group">
+        <ion-item>
+          <ion-label position="floating">Start Year</ion-label>
+          <ion-select
+            formControlName="higherEducationStartYear"
+            placeholder="Select"
+          >
+            @for (year of years; track year.value) {
+              <ion-select-option [value]="year.value">
+                {{ year.label }}
+              </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+      </div>
+    </div>
+
+    <div class="date-row">
+      <div class="date-group">
+        <ion-item>
+          <ion-label position="floating">End Month</ion-label>
+          <ion-select
+            formControlName="higherEducationEndMonth"
+            placeholder="Select"
+          >
+            @for (month of months; track month.value) {
+              <ion-select-option [value]="month.value">
+                {{ month.label }}
+              </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+      </div>
+
+      <div class="date-group">
+        <ion-item>
+          <ion-label position="floating">End Year</ion-label>
+          <ion-select
+            formControlName="higherEducationEndYear"
+            placeholder="Select"
+          >
+            @for (year of years; track year.value) {
+              <ion-select-option [value]="year.value">
+                {{ year.label }}
+              </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+      </div>
+    </div>
   </div>
 </div>

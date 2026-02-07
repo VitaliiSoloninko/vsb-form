@@ -89,11 +89,15 @@ export class Step3EducationComponent implements OnInit {
   private initializeForm() {
     this.formGroup = this.fb.group({
       schoolType: [''],
-      schoolCompletionMonth: [''],
-      schoolCompletionYear: [''],
+      schoolStartMonth: [''],
+      schoolStartYear: [''],
+      schoolEndMonth: [''],
+      schoolEndYear: [''],
       higherEducation: [''],
-      higherEducationCompletionMonth: [''],
-      higherEducationCompletionYear: [''],
+      higherEducationStartMonth: [''],
+      higherEducationStartYear: [''],
+      higherEducationEndMonth: [''],
+      higherEducationEndYear: [''],
     });
   }
 
