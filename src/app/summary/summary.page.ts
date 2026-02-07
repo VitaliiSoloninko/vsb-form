@@ -8,6 +8,7 @@ import {
   IonToolbar,
 } from '@ionic/angular/standalone';
 import { FormDataService } from '../services/form-data.service';
+import { PdfService } from '../services/pdf.service';
 
 @Component({
   selector: 'app-summary',
@@ -24,6 +25,7 @@ export class SummaryPage {
   constructor(
     private router: Router,
     private formDataService: FormDataService,
+    private pdfService: PdfService,
   ) {}
 
   // Format date from "2024-01" to "January 2024"
@@ -39,8 +41,14 @@ export class SummaryPage {
   }
 
   downloadPDF() {
-    console.log('PDF download will be implemented later');
-    // PDF generation will be implemented later
+    const data = this.formData();
+    if (data) {
+      // Get current language from localStorage or default to 'de'
+      const currentLang = localStorage.getItem('selectedLanguage') || 'de';
+      this.pdfService.generatePDF(data, currentLang).catch(err => {
+        console.error('Error generating PDF:', err);
+      });
+    }
   }
 
   clearForm() {
