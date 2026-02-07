@@ -72,6 +72,33 @@
       </div>
     </div>
 
+    <!-- Languages -->
+    <div class="section">
+      <h2>Language Skills</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="label">German Level:</span>
+          <span class="value"
+            >{{ formData()!.languages.germanLevel || 'Not specified' }}</span
+          >
+        </div>
+        <div class="info-item">
+          <span class="label">English Level:</span>
+          <span class="value"
+            >{{ formData()!.languages.englishLevel || 'Not specified' }}</span
+          >
+        </div>
+        @if (formData()!.languages.additionalLanguages) {
+        <div class="info-item full-width">
+          <span class="label">Additional Languages:</span>
+          <span class="value"
+            >{{ formData()!.languages.additionalLanguages }}</span
+          >
+        </div>
+        }
+      </div>
+    </div>
+
     <!-- Education -->
     <div class="section">
       <h2>Education</h2>
@@ -97,33 +124,6 @@
           <span class="value"
             >{{ formData()!.education.higherEducationCompletionMonth }}/{{
             formData()!.education.higherEducationCompletionYear }}</span
-          >
-        </div>
-        }
-      </div>
-    </div>
-
-    <!-- Languages -->
-    <div class="section">
-      <h2>Language Skills</h2>
-      <div class="info-grid">
-        <div class="info-item">
-          <span class="label">German Level:</span>
-          <span class="value"
-            >{{ formData()!.languages.germanLevel || 'Not specified' }}</span
-          >
-        </div>
-        <div class="info-item">
-          <span class="label">English Level:</span>
-          <span class="value"
-            >{{ formData()!.languages.englishLevel || 'Not specified' }}</span
-          >
-        </div>
-        @if (formData()!.languages.additionalLanguages) {
-        <div class="info-item full-width">
-          <span class="label">Additional Languages:</span>
-          <span class="value"
-            >{{ formData()!.languages.additionalLanguages }}</span
           >
         </div>
         }

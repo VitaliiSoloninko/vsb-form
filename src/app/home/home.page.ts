@@ -53,8 +53,8 @@ export class HomePage {
   // View children references to step components
   step1 = viewChild<Step1PersonalComponent>('step1');
   step2 = viewChild<Step2ContactComponent>('step2');
-  step3 = viewChild<Step3EducationComponent>('step3');
-  step4 = viewChild<Step4LanguagesComponent>('step4');
+  step3 = viewChild<Step4LanguagesComponent>('step3');
+  step4 = viewChild<Step3EducationComponent>('step4');
   step5 = viewChild<Step5WorkExperienceComponent>('step5');
 
   languages: Language[] = [
@@ -85,12 +85,12 @@ export class HomePage {
     this.formDataService.updateContact(data);
   }
 
-  onEducationDataChange(data: EducationData) {
-    this.formDataService.updateEducation(data);
-  }
-
   onLanguagesDataChange(data: LanguagesData) {
     this.formDataService.updateLanguages(data);
+  }
+
+  onEducationDataChange(data: EducationData) {
+    this.formDataService.updateEducation(data);
   }
 
   onWorkExperienceChange(data: WorkExperience[]) {
@@ -175,8 +175,8 @@ export class HomePage {
   private getCurrentStepComponent():
     | Step1PersonalComponent
     | Step2ContactComponent
-    | Step3EducationComponent
     | Step4LanguagesComponent
+    | Step3EducationComponent
     | Step5WorkExperienceComponent
     | null {
     const step = this.currentStep();
