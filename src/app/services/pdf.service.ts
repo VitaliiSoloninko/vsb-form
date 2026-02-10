@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TDocumentDefinitions, Content } from 'pdfmake/interfaces';
+import { Content, TDocumentDefinitions } from 'pdfmake/interfaces';
 import { ApplicationFormData } from '../models/form-data.models';
 
 @Injectable({
@@ -220,14 +220,17 @@ export class PdfService {
     },
   };
 
-  async generatePDF(formData: ApplicationFormData, language: string = 'en'): Promise<void> {
+  async generatePDF(
+    formData: ApplicationFormData,
+    language: string = 'en',
+  ): Promise<void> {
     // Dynamically import pdfmake and fonts
     const pdfMakeModule = await import('pdfmake/build/pdfmake');
     const pdfFontsModule = await import('pdfmake/build/vfs_fonts');
-    
+
     const pdfMake = (pdfMakeModule as any).default || pdfMakeModule;
     const pdfFonts = (pdfFontsModule as any).default || pdfFontsModule;
-    
+
     // Set fonts
     if (pdfFonts.pdfMake && pdfFonts.pdfMake.vfs) {
       pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -281,7 +284,9 @@ export class PdfService {
       },
     };
 
-    pdfMake.createPdf(docDefinition).download(`${t.title}_${formData.personal.lastName}.pdf`);
+    pdfMake
+      .createPdf(docDefinition)
+      .download(`${t.title}_${formData.personal.lastName}.pdf`);
   }
 
   private buildContent(formData: ApplicationFormData, t: any): Content[] {
@@ -296,15 +301,24 @@ export class PdfService {
 
     // Personal Information
     content.push({ text: t.personal, style: 'sectionHeader' });
-    content.push(this.createInfoBlock(t.firstName, formData.personal.firstName));
+    content.push(
+      this.createInfoBlock(t.firstName, formData.personal.firstName),
+    );
     content.push(this.createInfoBlock(t.lastName, formData.personal.lastName));
-    content.push(this.createInfoBlock(t.dateOfBirth, formData.personal.dateOfBirth));
-    content.push(this.createInfoBlock(t.placeOfBirth, formData.personal.placeOfBirth));
-    content.push(this.createInfoBlock(t.nationality, formData.personal.nationality));
+    content.push(
+      this.createInfoBlock(t.dateOfBirth, formData.personal.dateOfBirth),
+    );
+    content.push(
+      this.createInfoBlock(t.placeOfBirth, formData.personal.placeOfBirth),
+    );
+    content.push(
+      this.createInfoBlock(t.nationality, formData.personal.nationality),
+    );
     content.push(
       this.createInfoBlock(
         t.maritalStatus,
-        t.maritalStatuses[formData.personal.maritalStatus] || formData.personal.maritalStatus,
+        t.maritalStatuses[formData.personal.maritalStatus] ||
+          formData.personal.maritalStatus,
       ),
     );
 
@@ -321,11 +335,18 @@ export class PdfService {
 
     // Language Skills
     content.push({ text: t.languages, style: 'sectionHeader' });
-    content.push(this.createInfoBlock(t.germanLevel, formData.languages.germanLevel));
-    content.push(this.createInfoBlock(t.englishLevel, formData.languages.englishLevel));
+    content.push(
+      this.createInfoBlock(t.germanLevel, formData.languages.germanLevel),
+    );
+    content.push(
+      this.createInfoBlock(t.englishLevel, formData.languages.englishLevel),
+    );
     if (formData.languages.additionalLanguages) {
       content.push(
-        this.createInfoBlock(t.additionalLanguages, formData.languages.additionalLanguages),
+        this.createInfoBlock(
+          t.additionalLanguages,
+          formData.languages.additionalLanguages,
+        ),
       );
     }
 
@@ -334,7 +355,8 @@ export class PdfService {
     content.push(
       this.createInfoBlock(
         t.schoolType,
-        t.schoolTypes[formData.education.schoolType] || formData.education.schoolType,
+        t.schoolTypes[formData.education.schoolType] ||
+          formData.education.schoolType,
       ),
     );
     content.push(
@@ -344,7 +366,10 @@ export class PdfService {
       ),
     );
 
-    if (formData.education.higherEducation && formData.education.higherEducation !== 'none') {
+    if (
+      formData.education.higherEducation &&
+      formData.education.higherEducation !== 'none'
+    ) {
       content.push(
         this.createInfoBlock(
           t.higherEducation,
@@ -377,7 +402,9 @@ export class PdfService {
             `${this.formatDate(work.start)} - ${this.formatDate(work.end)}`,
           ),
         );
-        content.push(this.createInfoBlock(t.responsibilities, work.responsibilities));
+        content.push(
+          this.createInfoBlock(t.responsibilities, work.responsibilities),
+        );
       });
     }
 

@@ -1,13 +1,4 @@
 .step-content {
-  animation: fadeIn 0.3s ease-in;
-
-  h2 {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--ion-color-dark);
-    margin-bottom: 20px;
-  }
-
   .education-card {
     background: var(--ion-color-light);
     border-radius: 12px;
@@ -21,13 +12,6 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 12px;
-
-      h3 {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--ion-color-primary);
-        margin: 0;
-      }
     }
 
     .date-row {
@@ -41,12 +25,9 @@
     }
 
     ion-item {
-      --padding-start: 12px;
-      --padding-end: 12px;
-      --inner-padding-end: 0;
       --background: var(--ion-color-light-tint);
       margin-bottom: 12px;
-      border-radius: 8px;
+      border-radius: 12px;
 
       &.ion-invalid.ion-touched {
         --border-color: var(--ion-color-danger);
@@ -56,32 +37,19 @@
 
     ion-label {
       font-weight: 500;
-      font-size: 14px;
-      margin-bottom: 8px;
+      font-size: 16px;
     }
 
     ion-input,
     ion-select {
-      margin-top: 8px;
-      font-size: 14px;
+      margin-top: 18px;
     }
 
     .date-value {
       padding: 12px 0;
-      font-size: 16px;
+      font-size: 20px;
       color: var(--ion-color-dark);
       width: 100%;
     }
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
