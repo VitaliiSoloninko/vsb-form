@@ -1,96 +1,94 @@
 <div class="step-content" [formGroup]="formGroup">
-  <h2>Kontakt & Adresse</h2>
+  <h2>{{ "STEP2.TITLE" | transloco }}</h2>
   <ion-item>
-    <ion-label position="floating">Telefon *</ion-label>
+    <ion-label position="floating">{{ "STEP2.PHONE" | transloco }} *</ion-label>
     <ion-input
       type="tel"
       formControlName="phone"
-      placeholder="Geben Sie Ihre Telefonnummer ein"
+      [placeholder]="'STEP2.PHONE' | transloco"
     ></ion-input>
   </ion-item>
   @if (formGroup.get("phone")?.invalid && formGroup.get("phone")?.touched) {
     <div class="error-message">
-      @if (formGroup.get("phone")?.errors?.["required"]) {
-        Telefonnummer ist erforderlich
-      }
-      @if (formGroup.get("phone")?.errors?.["pattern"]) {
-        Bitte geben Sie eine gültige Telefonnummer ein
-      }
-      @if (formGroup.get("phone")?.errors?.["minlength"]) {
-        Telefonnummer muss mindestens 7 Zeichen lang sein
-      }
+      {{ "COMMON.REQUIRED" | transloco }}
     </div>
   }
 
   <ion-item>
-    <ion-label position="floating">E-Mail *</ion-label>
+    <ion-label position="floating">{{ "STEP2.EMAIL" | transloco }} *</ion-label>
     <ion-input
       type="email"
       formControlName="email"
-      placeholder="Geben Sie Ihre E-Mail ein"
+      [placeholder]="'STEP2.EMAIL' | transloco"
     ></ion-input>
   </ion-item>
   @if (formGroup.get("email")?.invalid && formGroup.get("email")?.touched) {
     <div class="error-message">
       @if (formGroup.get("email")?.errors?.["required"]) {
-        E-Mail ist erforderlich
+        {{ "COMMON.REQUIRED" | transloco }}
       }
       @if (formGroup.get("email")?.errors?.["email"]) {
-        Bitte geben Sie eine gültige E-Mail-Adresse ein
+        {{ "COMMON.INVALID_EMAIL" | transloco }}
       }
     </div>
   }
 
   <ion-item>
-    <ion-label position="floating">Straße *</ion-label>
+    <ion-label position="floating"
+      >{{ "STEP2.STREET" | transloco }} *</ion-label
+    >
     <ion-input
       type="text"
       formControlName="street"
-      placeholder="Geben Sie den Straßennamen ein"
+      [placeholder]="'STEP2.STREET' | transloco"
     ></ion-input>
   </ion-item>
   @if (formGroup.get("street")?.invalid && formGroup.get("street")?.touched) {
-    <div class="error-message">Straße ist erforderlich</div>
+    <div class="error-message">{{ "COMMON.REQUIRED" | transloco }}</div>
   }
 
   <ion-item>
-    <ion-label position="floating">Hausnummer *</ion-label>
+    <ion-label position="floating"
+      >{{ "STEP2.HOUSE_NUMBER" | transloco }} *</ion-label
+    >
     <ion-input
       type="text"
       formControlName="houseNumber"
-      placeholder="Geben Sie die Hausnummer ein"
+      [placeholder]="'STEP2.HOUSE_NUMBER' | transloco"
     ></ion-input>
   </ion-item>
   @if (
     formGroup.get("houseNumber")?.invalid &&
     formGroup.get("houseNumber")?.touched
   ) {
-    <div class="error-message">Hausnummer ist erforderlich</div>
+    <div class="error-message">{{ "COMMON.REQUIRED" | transloco }}</div>
   }
 
   <ion-item>
-    <ion-label position="floating">Postleitzahl *</ion-label>
+    <ion-label position="floating"
+      >{{ "STEP2.POSTAL_CODE" | transloco }} *</ion-label
+    >
     <ion-input
       type="text"
       formControlName="postalCode"
-      placeholder="Geben Sie die Postleitzahl ein"
+      [placeholder]="'STEP2.POSTAL_CODE' | transloco"
     ></ion-input>
   </ion-item>
   @if (
     formGroup.get("postalCode")?.invalid && formGroup.get("postalCode")?.touched
   ) {
-    <div class="error-message">Postleitzahl ist erforderlich</div>
+    <div class="error-message">{{ "COMMON.REQUIRED" | transloco }}</div>
   }
 
   <ion-item>
-    <ion-label position="floating">Stadt *</ion-label>
+    <ion-label position="floating">{{ "STEP2.CITY" | transloco }} *</ion-label>
     <ion-input
       type="text"
       formControlName="city"
-      placeholder="Geben Sie den Stadtnamen ein"
+      [placeholder]="'STEP2.CITY' | transloco"
     ></ion-input>
   </ion-item>
   @if (formGroup.get("city")?.invalid && formGroup.get("city")?.touched) {
-    <div class="error-message">Stadt ist erforderlich</div>
+    <div class="error-message">{{ "COMMON.REQUIRED" | transloco }}</div>
   }
 </div>

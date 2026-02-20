@@ -14,6 +14,7 @@ import {
   IonSelectOption,
   IonTextarea,
 } from '@ionic/angular/standalone';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { LanguagesData } from '../../../models/form-data.models';
 import { FormDataService } from '../../../services/form-data.service';
 
@@ -27,6 +28,7 @@ import { FormDataService } from '../../../services/form-data.service';
     IonSelect,
     IonSelectOption,
     IonTextarea,
+    TranslocoPipe,
   ],
   templateUrl: './step4-languages.component.html',
   styleUrls: ['./step4-languages.component.scss'],
@@ -42,13 +44,13 @@ export class Step4LanguagesComponent implements OnInit {
   isValid = computed(() => this.formGroup?.valid ?? false);
 
   languageLevels = [
-    { value: '', label: 'Not specified' },
-    { value: 'A1', label: 'A1 - Beginner' },
-    { value: 'A2', label: 'A2 - Elementary' },
-    { value: 'B1', label: 'B1 - Intermediate' },
-    { value: 'B2', label: 'B2 - Upper Intermediate' },
-    { value: 'C1', label: 'C1 - Advanced' },
-    { value: 'C2', label: 'C2 - Proficient' },
+    { value: '', label: 'COMMON.EMPTY' },
+    { value: 'A1', label: 'STEP3.LEVELS.A1' },
+    { value: 'A2', label: 'STEP3.LEVELS.A2' },
+    { value: 'B1', label: 'STEP3.LEVELS.B1' },
+    { value: 'B2', label: 'STEP3.LEVELS.B2' },
+    { value: 'C1', label: 'STEP3.LEVELS.C1' },
+    { value: 'C2', label: 'STEP3.LEVELS.C2' },
   ];
 
   constructor(private formDataService: FormDataService) {

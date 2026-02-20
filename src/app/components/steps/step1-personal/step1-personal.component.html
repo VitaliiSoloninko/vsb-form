@@ -1,12 +1,14 @@
 <div class="step-content" [formGroup]="formGroup">
-  <h2>Persönliche Informationen</h2>
+  <h2>{{ "STEP1.TITLE" | transloco }}</h2>
 
   <ion-item>
-    <ion-label position="floating">Vorname *</ion-label>
+    <ion-label position="floating"
+      >{{ "STEP1.FIRST_NAME" | transloco }} *</ion-label
+    >
     <ion-input
       type="text"
       formControlName="firstName"
-      placeholder="Geben Sie Ihren Vornamen ein"
+      [placeholder]="'STEP1.FIRST_NAME' | transloco"
     ></ion-input>
   </ion-item>
   @if (
@@ -14,20 +16,19 @@
   ) {
     <div class="error-message">
       @if (formGroup.get("firstName")?.errors?.["required"]) {
-        Vorname ist erforderlich
-      }
-      @if (formGroup.get("firstName")?.errors?.["minlength"]) {
-        Vorname muss mindestens 2 Zeichen lang sein
+        {{ "COMMON.REQUIRED" | transloco }}
       }
     </div>
   }
 
   <ion-item>
-    <ion-label position="floating">Nachname *</ion-label>
+    <ion-label position="floating"
+      >{{ "STEP1.LAST_NAME" | transloco }} *</ion-label
+    >
     <ion-input
       type="text"
       formControlName="lastName"
-      placeholder="Geben Sie Ihren Nachnamen ein"
+      [placeholder]="'STEP1.LAST_NAME' | transloco"
     ></ion-input>
   </ion-item>
   @if (
@@ -35,65 +36,69 @@
   ) {
     <div class="error-message">
       @if (formGroup.get("lastName")?.errors?.["required"]) {
-        Nachname ist erforderlich
-      }
-      @if (formGroup.get("lastName")?.errors?.["minlength"]) {
-        Nachname muss mindestens 2 Zeichen lang sein
+        {{ "COMMON.REQUIRED" | transloco }}
       }
     </div>
   }
 
   <ion-item>
-    <ion-label position="floating">Geburtsdatum *</ion-label>
-    <ion-input
-      type="date"
-      formControlName="dateOfBirth"
-      placeholder="Datum auswählen"
-    ></ion-input>
+    <ion-label position="floating"
+      >{{ "STEP1.DATE_OF_BIRTH" | transloco }} *</ion-label
+    >
+    <ion-input type="date" formControlName="dateOfBirth"></ion-input>
   </ion-item>
   @if (
     formGroup.get("dateOfBirth")?.invalid &&
     formGroup.get("dateOfBirth")?.touched
   ) {
-    <div class="error-message">Geburtsdatum ist erforderlich</div>
+    <div class="error-message">{{ "COMMON.REQUIRED" | transloco }}</div>
   }
 
   <ion-item>
-    <ion-label position="floating">Geburtsort *</ion-label>
+    <ion-label position="floating"
+      >{{ "STEP1.PLACE_OF_BIRTH" | transloco }} *</ion-label
+    >
     <ion-input
       type="text"
       formControlName="placeOfBirth"
-      placeholder="Geben Sie den Geburtsort ein"
+      [placeholder]="'STEP1.PLACE_OF_BIRTH' | transloco"
     ></ion-input>
   </ion-item>
   @if (
     formGroup.get("placeOfBirth")?.invalid &&
     formGroup.get("placeOfBirth")?.touched
   ) {
-    <div class="error-message">Geburtsort ist erforderlich</div>
+    <div class="error-message">{{ "COMMON.REQUIRED" | transloco }}</div>
   }
 
   <ion-item>
-    <ion-label position="floating">Nationalität *</ion-label>
+    <ion-label position="floating"
+      >{{ "STEP1.NATIONALITY" | transloco }} *</ion-label
+    >
     <ion-input
       type="text"
       formControlName="nationality"
-      placeholder="Geben Sie Ihre Nationalität ein"
+      [placeholder]="'STEP1.NATIONALITY' | transloco"
     ></ion-input>
   </ion-item>
   @if (
     formGroup.get("nationality")?.invalid &&
     formGroup.get("nationality")?.touched
   ) {
-    <div class="error-message">Nationalität ist erforderlich</div>
+    <div class="error-message">{{ "COMMON.REQUIRED" | transloco }}</div>
   }
 
   <ion-item>
-    <ion-label position="floating">Familienstand *</ion-label>
-    <ion-select formControlName="maritalStatus" placeholder="Status auswählen">
+    <ion-label position="floating"
+      >{{ "STEP1.MARITAL_STATUS.LABEL" | transloco }} *</ion-label
+    >
+    <ion-select
+      formControlName="maritalStatus"
+      [placeholder]="'STEP1.MARITAL_STATUS.LABEL' | transloco"
+    >
       @for (status of maritalStatuses; track status.value) {
         <ion-select-option [value]="status.value">
-          {{ status.label }}
+          {{ status.label | transloco }}
         </ion-select-option>
       }
     </ion-select>

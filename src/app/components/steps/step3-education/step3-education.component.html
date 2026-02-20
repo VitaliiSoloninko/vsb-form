@@ -1,32 +1,39 @@
 <div class="step-content" [formGroup]="formGroup">
-  <h2>Bildung</h2>
+  <h2>{{ "STEP4.TITLE" | transloco }}</h2>
 
   <!-- School Education Card -->
   <div class="education-card">
     <div class="card-header">
-      <h3>Schulbildung</h3>
+      <h3>{{ "STEP4.SCHOOL_EDUCATION" | transloco }}</h3>
     </div>
 
     <ion-item>
-      <ion-label position="floating">Schultyp</ion-label>
-      <ion-select formControlName="schoolType" placeholder="Schultyp auswählen">
+      <ion-label position="floating">{{ "STEP4.TYPE" | transloco }}</ion-label>
+      <ion-select
+        formControlName="schoolType"
+        [placeholder]="'STEP4.TYPE' | transloco"
+      >
         @for (type of schoolTypes; track type.value) {
           <ion-select-option [value]="type.value">
-            {{ type.label }}
+            {{ type.label | transloco }}
           </ion-select-option>
         }
       </ion-select>
     </ion-item>
 
     <ion-item button="true" id="school-start-trigger">
-      <ion-label position="stacked">Startdatum</ion-label>
+      <ion-label position="stacked">{{
+        "STEP5.START_DATE" | transloco
+      }}</ion-label>
       <div class="date-value">
         {{ formatDate(formGroup.get("schoolStart")?.value) }}
       </div>
     </ion-item>
 
     <ion-item button="true" id="school-end-trigger">
-      <ion-label position="stacked">Enddatum</ion-label>
+      <ion-label position="stacked">{{
+        "STEP5.END_DATE" | transloco
+      }}</ion-label>
       <div class="date-value">
         {{ formatDate(formGroup.get("schoolEnd")?.value) }}
       </div>
@@ -36,25 +43,29 @@
   <!-- Higher Education Card -->
   <div class="education-card">
     <div class="card-header">
-      <h3>Hochschulbildung</h3>
+      <h3>{{ "STEP4.HIGHER_EDUCATION" | transloco }}</h3>
     </div>
 
     <ion-item>
-      <ion-label position="floating">Abschluss</ion-label>
+      <ion-label position="floating">{{
+        "STEP4.DEGREE" | transloco
+      }}</ion-label>
       <ion-select
         formControlName="higherEducation"
-        placeholder="Abschluss auswählen"
+        [placeholder]="'STEP4.DEGREE' | transloco"
       >
         @for (edu of higherEducationTypes; track edu.value) {
           <ion-select-option [value]="edu.value">
-            {{ edu.label }}
+            {{ edu.label | transloco }}
           </ion-select-option>
         }
       </ion-select>
     </ion-item>
 
     <ion-item button="true" id="higher-start-trigger">
-      <ion-label position="stacked">Startdatum</ion-label>
+      <ion-label position="stacked">{{
+        "STEP5.START_DATE" | transloco
+      }}</ion-label>
       <div class="date-value">
         {{ formatDate(formGroup.get("higherEducationStart")?.value) }}
       </div>

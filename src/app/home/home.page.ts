@@ -7,6 +7,7 @@ import {
   IonHeader,
   IonToolbar,
 } from '@ionic/angular/standalone';
+import { TranslocoPipe } from '@jsverse/transloco';
 import {
   Language,
   LanguageSwitcherComponent,
@@ -25,6 +26,7 @@ import {
   WorkExperience,
 } from '../models/form-data.models';
 import { FormDataService } from '../services/form-data.service';
+import { TranslationService } from '../services/translation.service';
 
 @Component({
   selector: 'app-home',
@@ -43,6 +45,7 @@ import { FormDataService } from '../services/form-data.service';
     Step3EducationComponent,
     Step4LanguagesComponent,
     Step5WorkExperienceComponent,
+    TranslocoPipe,
   ],
 })
 export class HomePage {
@@ -68,12 +71,12 @@ export class HomePage {
   constructor(
     private router: Router,
     private formDataService: FormDataService,
+    private translationService: TranslationService,
   ) {}
 
   changeLanguage(langCode: string) {
     this.currentLanguage.set(langCode);
-    console.log('Language changed to:', langCode);
-    // i18n will be implemented later
+    this.translationService.setActiveLang(langCode);
   }
 
   // Handle form data updates from child components

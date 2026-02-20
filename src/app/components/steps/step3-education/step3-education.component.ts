@@ -13,6 +13,7 @@ import {
   IonSelect,
   IonSelectOption,
 } from '@ionic/angular/standalone';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { DatePickerModalComponent } from '../../../components/date-picker-modal/date-picker-modal.component';
 import { EducationData } from '../../../models/form-data.models';
 import { FormDataService } from '../../../services/form-data.service';
@@ -27,6 +28,7 @@ import { FormDataService } from '../../../services/form-data.service';
     IonSelect,
     IonSelectOption,
     DatePickerModalComponent,
+    TranslocoPipe,
   ],
   templateUrl: './step3-education.component.html',
   styleUrls: ['./step3-education.component.scss'],
@@ -42,15 +44,15 @@ export class Step3EducationComponent implements OnInit {
   isValid = computed(() => this.formGroup?.valid ?? false);
 
   schoolTypes = [
-    { value: '9classes', label: '9 Klassen' },
-    { value: '10classes', label: '10 Klassen' },
-    { value: 'gymnasium', label: 'Gymnasium' },
+    { value: '9classes', label: 'STEP4.TYPES.NINE_CLASSES' },
+    { value: '10classes', label: 'STEP4.TYPES.TEN_CLASSES' },
+    { value: 'gymnasium', label: 'STEP4.TYPES.GYMNASIUM' },
   ];
 
   higherEducationTypes = [
-    { value: '', label: 'Keine' },
-    { value: 'bachelor', label: 'Bachelor' },
-    { value: 'master', label: 'Master' },
+    { value: '', label: 'COMMON.EMPTY' },
+    { value: 'bachelor', label: 'STEP4.DEGREES.BACHELOR' },
+    { value: 'master', label: 'STEP4.DEGREES.MASTER' },
   ];
 
   constructor(private formDataService: FormDataService) {

@@ -1,0 +1,127 @@
+{
+  "HEADER": {
+    "LOGO": "Резюме"
+  },
+  "STEPS": {
+    "PERSONAL": "Личные данные",
+    "CONTACT": "Контакты и адрес",
+    "LANGUAGES": "Языки",
+    "EDUCATION": "Образование",
+    "WORK": "Опыт работы"
+  },
+  "STEP1": {
+    "TITLE": "Личные данные",
+    "FIRST_NAME": "Имя",
+    "LAST_NAME": "Фамилия",
+    "DATE_OF_BIRTH": "Дата рождения",
+    "PLACE_OF_BIRTH": "Место рождения",
+    "NATIONALITY": "Национальность",
+    "MARITAL_STATUS": {
+      "LABEL": "Семейное положение",
+      "SINGLE": "Холост/Не замужем",
+      "MARRIED": "Женат/Замужем",
+      "DIVORCED": "Разведен/Разведена"
+    }
+  },
+  "STEP2": {
+    "TITLE": "Контакты и адрес",
+    "PHONE": "Телефон",
+    "EMAIL": "Эл. почта",
+    "STREET": "Улица",
+    "HOUSE_NUMBER": "Номер дома",
+    "POSTAL_CODE": "Почтовый индекс",
+    "CITY": "Город"
+  },
+  "STEP3": {
+    "TITLE": "Языки",
+    "GERMAN": "Немецкий",
+    "ENGLISH": "Английский",
+    "ADDITIONAL_LANGUAGES": "Дополнительные языки",
+    "LANGUAGE_NAME": "Язык",
+    "LEVEL": "Уровень",
+    "ADD_LANGUAGE": "Добавить язык",
+    "REMOVE": "Удалить",
+    "LEVELS": {
+      "A1": "A1 - Начальный",
+      "A2": "A2 - Элементарный",
+      "B1": "B1 - Средний",
+      "B2": "B2 - Выше среднего",
+      "C1": "C1 - Продвинутый",
+      "C2": "C2 - Родной"
+    }
+  },
+  "STEP4": {
+    "TITLE": "Образование",
+    "SCHOOL_EDUCATION": "Школьное образование",
+    "TYPE": "Тип образования",
+    "TYPES": {
+      "NINE_CLASSES": "9 классов",
+      "TEN_CLASSES": "10 классов",
+      "GYMNASIUM": "Гимназия"
+    },
+    "COMPLETION_DATE": "Дата окончания",
+    "HIGHER_EDUCATION": "Высшее образование",
+    "DEGREE": "Степень",
+    "DEGREES": {
+      "BACHELOR": "Бакалавр",
+      "MASTER": "Магистр"
+    },
+    "FIELD_OF_STUDY": "Специальность",
+    "INSTITUTION": "Учреждение",
+    "MONTH": "Месяц",
+    "YEAR": "Год"
+  },
+  "STEP5": {
+    "TITLE": "Опыт работы",
+    "ADD_EXPERIENCE": "Добавить опыт работы",
+    "POSITION": "Должность",
+    "COMPANY": "Компания",
+    "RESPONSIBILITIES": "Обязанности",
+    "START_DATE": "Дата начала",
+    "END_DATE": "Дата окончания",
+    "CURRENT": "По настоящее время",
+    "REMOVE": "Удалить",
+    "MONTH": "Месяц",
+    "YEAR": "Год"
+  },
+  "SUMMARY": {
+    "TITLE": "Сводка",
+    "PERSONAL_INFO": "Личная информация",
+    "CONTACT_INFO": "Контактная информация",
+    "ADDRESS": "Адрес",
+    "LANGUAGE_SKILLS": "Языки",
+    "EDUCATION_INFO": "Образование",
+    "SCHOOL": "Школа",
+    "HIGHER_ED": "Высшее образование",
+    "WORK_EXPERIENCE": "Опыт работы",
+    "EMPTY": "Информация не указана"
+  },
+  "BUTTONS": {
+    "NEXT": "Далее",
+    "BACK": "Назад",
+    "CREATE_PDF": "Создать PDF",
+    "EDIT": "Редактировать"
+  },
+  "COMMON": {
+    "LOADING": "Загрузка...",
+    "ERROR": "Ошибка",
+    "SUCCESS": "Успех",
+    "REQUIRED": "Обязательно",
+    "INVALID_EMAIL": "Неверный адрес эл. почты",
+    "PRESENT": "По настоящее время"
+  },
+  "MONTHS": {
+    "JAN": "Январь",
+    "FEB": "Февраль",
+    "MAR": "Март",
+    "APR": "Апрель",
+    "MAY": "Май",
+    "JUN": "Июнь",
+    "JUL": "Июль",
+    "AUG": "Август",
+    "SEP": "Сентябрь",
+    "OCT": "Октябрь",
+    "NOV": "Ноябрь",
+    "DEC": "Декабрь"
+  }
+}

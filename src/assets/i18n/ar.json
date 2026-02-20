@@ -1,0 +1,127 @@
+{
+  "HEADER": {
+    "LOGO": "السيرة الذاتية"
+  },
+  "STEPS": {
+    "PERSONAL": "المعلومات الشخصية",
+    "CONTACT": "جهات الاتصال والعنوان",
+    "LANGUAGES": "المهارات اللغوية",
+    "EDUCATION": "التعليم",
+    "WORK": "الخبرة العملية"
+  },
+  "STEP1": {
+    "TITLE": "المعلومات الشخصية",
+    "FIRST_NAME": "الاسم الأول",
+    "LAST_NAME": "اسم العائلة",
+    "DATE_OF_BIRTH": "تاريخ الميلاد",
+    "PLACE_OF_BIRTH": "مكان الميلاد",
+    "NATIONALITY": "الجنسية",
+    "MARITAL_STATUS": {
+      "LABEL": "الحالة الاجتماعية",
+      "SINGLE": "أعزب",
+      "MARRIED": "متزوج",
+      "DIVORCED": "مطلق"
+    }
+  },
+  "STEP2": {
+    "TITLE": "جهات الاتصال والعنوان",
+    "PHONE": "الهاتف",
+    "EMAIL": "البريد الإلكتروني",
+    "STREET": "الشارع",
+    "HOUSE_NUMBER": "رقم المنزل",
+    "POSTAL_CODE": "الرمز البريدي",
+    "CITY": "المدينة"
+  },
+  "STEP3": {
+    "TITLE": "المهارات اللغوية",
+    "GERMAN": "الألمانية",
+    "ENGLISH": "الإنجليزية",
+    "ADDITIONAL_LANGUAGES": "لغات إضافية",
+    "LANGUAGE_NAME": "اللغة",
+    "LEVEL": "المستوى",
+    "ADD_LANGUAGE": "إضافة لغة",
+    "REMOVE": "حذف",
+    "LEVELS": {
+      "A1": "A1 - مبتدئ",
+      "A2": "A2 - أساسي",
+      "B1": "B1 - متوسط",
+      "B2": "B2 - فوق المتوسط",
+      "C1": "C1 - متقدم",
+      "C2": "C2 - احترافي"
+    }
+  },
+  "STEP4": {
+    "TITLE": "التعليم",
+    "SCHOOL_EDUCATION": "التعليم المدرسي",
+    "TYPE": "نوع التعليم",
+    "TYPES": {
+      "NINE_CLASSES": "9 صفوف",
+      "TEN_CLASSES": "10 صفوف",
+      "GYMNASIUM": "المدرسة الثانوية"
+    },
+    "COMPLETION_DATE": "تاريخ الانتهاء",
+    "HIGHER_EDUCATION": "التعليم العالي",
+    "DEGREE": "الدرجة العلمية",
+    "DEGREES": {
+      "BACHELOR": "بكالوريوس",
+      "MASTER": "ماجستير"
+    },
+    "FIELD_OF_STUDY": "مجال الدراسة",
+    "INSTITUTION": "المؤسسة",
+    "MONTH": "الشهر",
+    "YEAR": "السنة"
+  },
+  "STEP5": {
+    "TITLE": "الخبرة العملية",
+    "ADD_EXPERIENCE": "إضافة خبرة عملية",
+    "POSITION": "المنصب",
+    "COMPANY": "الشركة",
+    "RESPONSIBILITIES": "المسؤوليات",
+    "START_DATE": "تاريخ البدء",
+    "END_DATE": "تاريخ الانتهاء",
+    "CURRENT": "حالي",
+    "REMOVE": "حذف",
+    "MONTH": "الشهر",
+    "YEAR": "السنة"
+  },
+  "SUMMARY": {
+    "TITLE": "الملخص",
+    "PERSONAL_INFO": "المعلومات الشخصية",
+    "CONTACT_INFO": "معلومات الاتصال",
+    "ADDRESS": "العنوان",
+    "LANGUAGE_SKILLS": "المهارات اللغوية",
+    "EDUCATION_INFO": "التعليم",
+    "SCHOOL": "المدرسة",
+    "HIGHER_ED": "التعليم العالي",
+    "WORK_EXPERIENCE": "الخبرة العملية",
+    "EMPTY": "لا توجد معلومات"
+  },
+  "BUTTONS": {
+    "NEXT": "التالي",
+    "BACK": "رجوع",
+    "CREATE_PDF": "إنشاء PDF",
+    "EDIT": "تعديل"
+  },
+  "COMMON": {
+    "LOADING": "جاري التحميل...",
+    "ERROR": "خطأ",
+    "SUCCESS": "نجح",
+    "REQUIRED": "مطلوب",
+    "INVALID_EMAIL": "عنوان البريد الإلكتروني غير صحيح",
+    "PRESENT": "حتى الآن"
+  },
+  "MONTHS": {
+    "JAN": "يناير",
+    "FEB": "فبراير",
+    "MAR": "مارس",
+    "APR": "أبريل",
+    "MAY": "مايو",
+    "JUN": "يونيو",
+    "JUL": "يوليو",
+    "AUG": "أغسطس",
+    "SEP": "سبتمبر",
+    "OCT": "أكتوبر",
+    "NOV": "نوفمبر",
+    "DEC": "ديسمبر"
+  }
+}

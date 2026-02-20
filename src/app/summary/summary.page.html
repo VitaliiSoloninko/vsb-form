@@ -1,41 +1,43 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Bewerbungszusammenfassung</ion-title>
+    <ion-title>{{ 'SUMMARY.TITLE' | transloco }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="summary-container">
-    <h1>Bewerbungszusammenfassung</h1>
-    <p class="subtitle">Überprüfen Sie Ihre eingereichten Informationen</p>
+    <h1>{{ 'SUMMARY.TITLE' | transloco }}</h1>
+    <p class="subtitle">{{ 'SUMMARY.TITLE' | transloco }}</p>
 
     @if (formData()) {
     <!-- Personal Information -->
     <div class="section">
-      <h2>Persönliche Informationen</h2>
+      <h2>{{ 'SUMMARY.PERSONAL_INFO' | transloco }}</h2>
       <div class="info-grid">
         <div class="info-item">
-          <span class="label">Vorname:</span>
+          <span class="label">{{ 'STEP1.FIRST_NAME' | transloco }}:</span>
           <span class="value">{{ formData()!.personal.firstName }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Nachname:</span>
+          <span class="label">{{ 'STEP1.LAST_NAME' | transloco }}:</span>
           <span class="value">{{ formData()!.personal.lastName }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Geburtsdatum:</span>
+          <span class="label">{{ 'STEP1.DATE_OF_BIRTH' | transloco }}:</span>
           <span class="value">{{ formData()!.personal.dateOfBirth }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Geburtsort:</span>
+          <span class="label">{{ 'STEP1.PLACE_OF_BIRTH' | transloco }}:</span>
           <span class="value">{{ formData()!.personal.placeOfBirth }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Nationalität:</span>
+          <span class="label">{{ 'STEP1.NATIONALITY' | transloco }}:</span>
           <span class="value">{{ formData()!.personal.nationality }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Familienstand:</span>
+          <span class="label"
+            >{{ 'STEP1.MARITAL_STATUS.LABEL' | transloco }}:</span
+          >
           <span class="value">{{ formData()!.personal.maritalStatus }}</span>
         </div>
       </div>
@@ -43,30 +45,30 @@
 
     <!-- Contact & Address -->
     <div class="section">
-      <h2>Kontakt & Adresse</h2>
+      <h2>{{ 'SUMMARY.CONTACT_INFO' | transloco }}</h2>
       <div class="info-grid">
         <div class="info-item">
-          <span class="label">Telefon:</span>
+          <span class="label">{{ 'STEP2.PHONE' | transloco }}:</span>
           <span class="value">{{ formData()!.contact.phone }}</span>
         </div>
         <div class="info-item">
-          <span class="label">E-Mail:</span>
+          <span class="label">{{ 'STEP2.EMAIL' | transloco }}:</span>
           <span class="value">{{ formData()!.contact.email }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Straße:</span>
+          <span class="label">{{ 'STEP2.STREET' | transloco }}:</span>
           <span class="value">{{ formData()!.contact.street }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Hausnummer:</span>
+          <span class="label">{{ 'STEP2.HOUSE_NUMBER' | transloco }}:</span>
           <span class="value">{{ formData()!.contact.houseNumber }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Postleitzahl:</span>
+          <span class="label">{{ 'STEP2.POSTAL_CODE' | transloco }}:</span>
           <span class="value">{{ formData()!.contact.postalCode }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Stadt:</span>
+          <span class="label">{{ 'STEP2.CITY' | transloco }}:</span>
           <span class="value">{{ formData()!.contact.city }}</span>
         </div>
       </div>
@@ -74,23 +76,27 @@
 
     <!-- Languages -->
     <div class="section">
-      <h2>Sprachkenntnisse</h2>
+      <h2>{{ 'SUMMARY.LANGUAGE_SKILLS' | transloco }}</h2>
       <div class="info-grid">
         <div class="info-item">
-          <span class="label">Deutschniveau:</span>
+          <span class="label">{{ 'STEP3.GERMAN' | transloco }}:</span>
           <span class="value"
-            >{{ formData()!.languages.germanLevel || 'Nicht angegeben' }}</span
+            >{{ formData()!.languages.germanLevel || ('SUMMARY.EMPTY' |
+            transloco) }}</span
           >
         </div>
         <div class="info-item">
-          <span class="label">Englischniveau:</span>
+          <span class="label">{{ 'STEP3.ENGLISH' | transloco }}:</span>
           <span class="value"
-            >{{ formData()!.languages.englishLevel || 'Nicht angegeben' }}</span
+            >{{ formData()!.languages.englishLevel || ('SUMMARY.EMPTY' |
+            transloco) }}</span
           >
         </div>
         @if (formData()!.languages.additionalLanguages) {
         <div class="info-item full-width">
-          <span class="label">Zusätzliche Sprachen:</span>
+          <span class="label"
+            >{{ 'STEP3.ADDITIONAL_LANGUAGES' | transloco }}:</span
+          >
           <span class="value"
             >{{ formData()!.languages.additionalLanguages }}</span
           >
@@ -101,17 +107,17 @@
 
     <!-- Education -->
     <div class="section">
-      <h2>Bildung</h2>
+      <h2>{{ 'SUMMARY.EDUCATION_INFO' | transloco }}</h2>
 
       <!-- School Education -->
       <div class="experience-card">
-        <h3>Schulbildung</h3>
+        <h3>{{ 'SUMMARY.SCHOOL' | transloco }}</h3>
         <div class="experience-period">
           {{ formatDate(formData()!.education.schoolStart) }} - {{
           formatDate(formData()!.education.schoolEnd) }}
         </div>
         <div class="experience-responsibilities">
-          <strong>Schultyp:</strong>
+          <strong>{{ 'STEP4.TYPE' | transloco }}:</strong>
           <p>{{ formData()!.education.schoolType }}</p>
         </div>
       </div>
@@ -119,13 +125,13 @@
       <!-- Higher Education -->
       @if (formData()!.education.higherEducation) {
       <div class="experience-card">
-        <h3>Hochschulbildung</h3>
+        <h3>{{ 'SUMMARY.HIGHER_ED' | transloco }}</h3>
         <div class="experience-period">
           {{ formatDate(formData()!.education.higherEducationStart) }} - {{
           formatDate(formData()!.education.higherEducationEnd) }}
         </div>
         <div class="experience-responsibilities">
-          <strong>Abschluss:</strong>
+          <strong>{{ 'STEP4.DEGREE' | transloco }}:</strong>
           <p>{{ formData()!.education.higherEducation }}</p>
         </div>
       </div>
@@ -134,7 +140,7 @@
 
     <!-- Work Experience -->
     <div class="section">
-      <h2>Berufserfahrung</h2>
+      <h2>{{ 'SUMMARY.WORK_EXPERIENCE' | transloco }}</h2>
       @if (formData()!.workExperience && formData()!.workExperience.length > 0)
       { @for (experience of formData()!.workExperience; track $index) {
       <div class="experience-card">
@@ -143,22 +149,22 @@
           {{ formatDate(experience.start) }} - {{ formatDate(experience.end) }}
         </div>
         <div class="experience-responsibilities">
-          <strong>Verantwortlichkeiten:</strong>
+          <strong>{{ 'STEP5.RESPONSIBILITIES' | transloco }}:</strong>
           <p>{{ experience.responsibilities }}</p>
         </div>
       </div>
       } } @else {
-      <p class="no-data">Keine Berufserfahrung hinzugefügt</p>
+      <p class="no-data">{{ 'SUMMARY.EMPTY' | transloco }}</p>
       }
     </div>
 
     <!-- Action Buttons -->
     <div class="action-buttons">
       <ion-button expand="block" fill="outline" (click)="backToForm()">
-        Zurück zum Formular
+        {{ 'BUTTONS.BACK' | transloco }}
       </ion-button>
       <ion-button expand="block" color="success" (click)="downloadPDF()">
-        PDF herunterladen
+        {{ 'BUTTONS.CREATE_PDF' | transloco }}
       </ion-button>
       <ion-button
         expand="block"
@@ -166,16 +172,16 @@
         fill="outline"
         (click)="clearForm()"
       >
-        Alle Daten löschen
+        {{ 'BUTTONS.EDIT' | transloco }}
       </ion-button>
     </div>
     } @else {
     <!-- No data available -->
     <div class="no-data-container">
-      <h2>Keine Daten verfügbar</h2>
-      <p>Bitte füllen Sie zuerst das Formular aus.</p>
+      <h2>{{ 'SUMMARY.EMPTY' | transloco }}</h2>
+      <p>{{ 'SUMMARY.EMPTY' | transloco }}</p>
       <ion-button expand="block" (click)="backToForm()">
-        Zum Formular gehen
+        {{ 'BUTTONS.BACK' | transloco }}
       </ion-button>
     </div>
     }

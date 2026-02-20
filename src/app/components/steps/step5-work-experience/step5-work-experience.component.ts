@@ -21,6 +21,7 @@ import {
   IonLabel,
   IonTextarea,
 } from '@ionic/angular/standalone';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { addIcons } from 'ionicons';
 import { addOutline, trashOutline } from 'ionicons/icons';
 import { DatePickerModalComponent } from '../../../components/date-picker-modal/date-picker-modal.component';
@@ -39,6 +40,7 @@ import { FormDataService } from '../../../services/form-data.service';
     IonButton,
     IonIcon,
     DatePickerModalComponent,
+    TranslocoPipe,
   ],
   templateUrl: './step5-work-experience.component.html',
   styleUrls: ['./step5-work-experience.component.scss'],

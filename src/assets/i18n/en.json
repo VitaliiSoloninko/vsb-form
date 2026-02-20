@@ -1,0 +1,127 @@
+{
+  "HEADER": {
+    "LOGO": "Resume"
+  },
+  "STEPS": {
+    "PERSONAL": "Personal Information",
+    "CONTACT": "Contact & Address",
+    "LANGUAGES": "Language Skills",
+    "EDUCATION": "Education",
+    "WORK": "Work Experience"
+  },
+  "STEP1": {
+    "TITLE": "Personal Information",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "DATE_OF_BIRTH": "Date of Birth",
+    "PLACE_OF_BIRTH": "Place of Birth",
+    "NATIONALITY": "Nationality",
+    "MARITAL_STATUS": {
+      "LABEL": "Marital Status",
+      "SINGLE": "Single",
+      "MARRIED": "Married",
+      "DIVORCED": "Divorced"
+    }
+  },
+  "STEP2": {
+    "TITLE": "Contact & Address",
+    "PHONE": "Phone",
+    "EMAIL": "Email",
+    "STREET": "Street",
+    "HOUSE_NUMBER": "House Number",
+    "POSTAL_CODE": "Postal Code",
+    "CITY": "City"
+  },
+  "STEP3": {
+    "TITLE": "Language Skills",
+    "GERMAN": "German",
+    "ENGLISH": "English",
+    "ADDITIONAL_LANGUAGES": "Additional Languages",
+    "LANGUAGE_NAME": "Language",
+    "LEVEL": "Level",
+    "ADD_LANGUAGE": "Add Language",
+    "REMOVE": "Remove",
+    "LEVELS": {
+      "A1": "A1 - Beginner",
+      "A2": "A2 - Elementary",
+      "B1": "B1 - Intermediate",
+      "B2": "B2 - Upper Intermediate",
+      "C1": "C1 - Advanced",
+      "C2": "C2 - Native"
+    }
+  },
+  "STEP4": {
+    "TITLE": "Education",
+    "SCHOOL_EDUCATION": "School Education",
+    "TYPE": "Education Type",
+    "TYPES": {
+      "NINE_CLASSES": "9 Grades",
+      "TEN_CLASSES": "10 Grades",
+      "GYMNASIUM": "High School"
+    },
+    "COMPLETION_DATE": "Completion Date",
+    "HIGHER_EDUCATION": "Higher Education",
+    "DEGREE": "Degree",
+    "DEGREES": {
+      "BACHELOR": "Bachelor",
+      "MASTER": "Master"
+    },
+    "FIELD_OF_STUDY": "Field of Study",
+    "INSTITUTION": "Institution",
+    "MONTH": "Month",
+    "YEAR": "Year"
+  },
+  "STEP5": {
+    "TITLE": "Work Experience",
+    "ADD_EXPERIENCE": "Add Work Experience",
+    "POSITION": "Position",
+    "COMPANY": "Company",
+    "RESPONSIBILITIES": "Responsibilities",
+    "START_DATE": "Start Date",
+    "END_DATE": "End Date",
+    "CURRENT": "Current",
+    "REMOVE": "Remove",
+    "MONTH": "Month",
+    "YEAR": "Year"
+  },
+  "SUMMARY": {
+    "TITLE": "Summary",
+    "PERSONAL_INFO": "Personal Information",
+    "CONTACT_INFO": "Contact Information",
+    "ADDRESS": "Address",
+    "LANGUAGE_SKILLS": "Language Skills",
+    "EDUCATION_INFO": "Education",
+    "SCHOOL": "School",
+    "HIGHER_ED": "Higher Education",
+    "WORK_EXPERIENCE": "Work Experience",
+    "EMPTY": "No information provided"
+  },
+  "BUTTONS": {
+    "NEXT": "Next",
+    "BACK": "Back",
+    "CREATE_PDF": "Create PDF",
+    "EDIT": "Edit"
+  },
+  "COMMON": {
+    "LOADING": "Loading...",
+    "ERROR": "Error",
+    "SUCCESS": "Success",
+    "REQUIRED": "Required",
+    "INVALID_EMAIL": "Invalid email address",
+    "PRESENT": "Present"
+  },
+  "MONTHS": {
+    "JAN": "January",
+    "FEB": "February",
+    "MAR": "March",
+    "APR": "April",
+    "MAY": "May",
+    "JUN": "June",
+    "JUL": "July",
+    "AUG": "August",
+    "SEP": "September",
+    "OCT": "October",
+    "NOV": "November",
+    "DEC": "December"
+  }
+}

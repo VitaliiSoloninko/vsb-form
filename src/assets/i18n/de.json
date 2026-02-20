@@ -1,0 +1,127 @@
+{
+  "HEADER": {
+    "LOGO": "Lebenslauf"
+  },
+  "STEPS": {
+    "PERSONAL": "Persönliche Daten",
+    "CONTACT": "Kontakt & Adresse",
+    "LANGUAGES": "Sprachkenntnisse",
+    "EDUCATION": "Bildung",
+    "WORK": "Berufserfahrung"
+  },
+  "STEP1": {
+    "TITLE": "Persönliche Daten",
+    "FIRST_NAME": "Vorname",
+    "LAST_NAME": "Nachname",
+    "DATE_OF_BIRTH": "Geburtsdatum",
+    "PLACE_OF_BIRTH": "Geburtsort",
+    "NATIONALITY": "Staatsangehörigkeit",
+    "MARITAL_STATUS": {
+      "LABEL": "Familienstand",
+      "SINGLE": "Ledig",
+      "MARRIED": "Verheiratet",
+      "DIVORCED": "Geschieden"
+    }
+  },
+  "STEP2": {
+    "TITLE": "Kontakt & Adresse",
+    "PHONE": "Telefon",
+    "EMAIL": "E-Mail",
+    "STREET": "Straße",
+    "HOUSE_NUMBER": "Hausnummer",
+    "POSTAL_CODE": "Postleitzahl",
+    "CITY": "Stadt"
+  },
+  "STEP3": {
+    "TITLE": "Sprachkenntnisse",
+    "GERMAN": "Deutsch",
+    "ENGLISH": "Englisch",
+    "ADDITIONAL_LANGUAGES": "Zusätzliche Sprachen",
+    "LANGUAGE_NAME": "Sprache",
+    "LEVEL": "Niveau",
+    "ADD_LANGUAGE": "Sprache hinzufügen",
+    "REMOVE": "Entfernen",
+    "LEVELS": {
+      "A1": "A1 - Anfänger",
+      "A2": "A2 - Grundkenntnisse",
+      "B1": "B1 - Fortgeschritten",
+      "B2": "B2 - Selbstständig",
+      "C1": "C1 - Kompetent",
+      "C2": "C2 - Muttersprachlich"
+    }
+  },
+  "STEP4": {
+    "TITLE": "Bildung",
+    "SCHOOL_EDUCATION": "Schulbildung",
+    "TYPE": "Bildungstyp",
+    "TYPES": {
+      "NINE_CLASSES": "9 Klassen",
+      "TEN_CLASSES": "10 Klassen",
+      "GYMNASIUM": "Gymnasium"
+    },
+    "COMPLETION_DATE": "Abschlussdatum",
+    "HIGHER_EDUCATION": "Hochschulbildung",
+    "DEGREE": "Abschluss",
+    "DEGREES": {
+      "BACHELOR": "Bachelor",
+      "MASTER": "Master"
+    },
+    "FIELD_OF_STUDY": "Studiengang",
+    "INSTITUTION": "Institution",
+    "MONTH": "Monat",
+    "YEAR": "Jahr"
+  },
+  "STEP5": {
+    "TITLE": "Berufserfahrung",
+    "ADD_EXPERIENCE": "Berufserfahrung hinzufügen",
+    "POSITION": "Position",
+    "COMPANY": "Unternehmen",
+    "RESPONSIBILITIES": "Verantwortlichkeiten",
+    "START_DATE": "Startdatum",
+    "END_DATE": "Enddatum",
+    "CURRENT": "Aktuell",
+    "REMOVE": "Entfernen",
+    "MONTH": "Monat",
+    "YEAR": "Jahr"
+  },
+  "SUMMARY": {
+    "TITLE": "Zusammenfassung",
+    "PERSONAL_INFO": "Persönliche Informationen",
+    "CONTACT_INFO": "Kontaktinformationen",
+    "ADDRESS": "Adresse",
+    "LANGUAGE_SKILLS": "Sprachkenntnisse",
+    "EDUCATION_INFO": "Bildung",
+    "SCHOOL": "Schule",
+    "HIGHER_ED": "Hochschule",
+    "WORK_EXPERIENCE": "Berufserfahrung",
+    "EMPTY": "Keine Angaben"
+  },
+  "BUTTONS": {
+    "NEXT": "Weiter",
+    "BACK": "Zurück",
+    "CREATE_PDF": "PDF erstellen",
+    "EDIT": "Bearbeiten"
+  },
+  "COMMON": {
+    "LOADING": "Laden...",
+    "ERROR": "Fehler",
+    "SUCCESS": "Erfolg",
+    "REQUIRED": "Erforderlich",
+    "INVALID_EMAIL": "Ungültige E-Mail-Adresse",
+    "PRESENT": "Bis heute"
+  },
+  "MONTHS": {
+    "JAN": "Januar",
+    "FEB": "Februar",
+    "MAR": "März",
+    "APR": "April",
+    "MAY": "Mai",
+    "JUN": "Juni",
+    "JUL": "Juli",
+    "AUG": "August",
+    "SEP": "September",
+    "OCT": "Oktober",
+    "NOV": "November",
+    "DEC": "Dezember"
+  }
+}

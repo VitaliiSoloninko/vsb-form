@@ -1,33 +1,41 @@
 <div class="step-content" [formGroup]="formGroup">
-  <h2>Sprachkenntnisse</h2>
+  <h2>{{ "STEP3.TITLE" | transloco }}</h2>
 
   <ion-item>
-    <ion-label position="floating">Deutschniveau</ion-label>
-    <ion-select formControlName="germanLevel" placeholder="Niveau auswählen">
+    <ion-label position="floating">{{ "STEP3.GERMAN" | transloco }}</ion-label>
+    <ion-select
+      formControlName="germanLevel"
+      [placeholder]="'STEP3.LEVEL' | transloco"
+    >
       @for (level of languageLevels; track level.value) {
         <ion-select-option [value]="level.value">
-          {{ level.label }}
+          {{ level.label | transloco }}
         </ion-select-option>
       }
     </ion-select>
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">Englischniveau</ion-label>
-    <ion-select formControlName="englishLevel" placeholder="Niveau auswählen">
+    <ion-label position="floating">{{ "STEP3.ENGLISH" | transloco }}</ion-label>
+    <ion-select
+      formControlName="englishLevel"
+      [placeholder]="'STEP3.LEVEL' | transloco"
+    >
       @for (level of languageLevels; track level.value) {
         <ion-select-option [value]="level.value">
-          {{ level.label }}
+          {{ level.label | transloco }}
         </ion-select-option>
       }
     </ion-select>
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">Zusätzliche Sprachen</ion-label>
+    <ion-label position="floating">{{
+      "STEP3.ADDITIONAL_LANGUAGES" | transloco
+    }}</ion-label>
     <ion-textarea
       formControlName="additionalLanguages"
-      placeholder="z.B. Französisch (B2), Spanisch (A1), usw."
+      [placeholder]="'STEP3.ADDITIONAL_LANGUAGES' | transloco"
       [autoGrow]="true"
       rows="3"
     ></ion-textarea>

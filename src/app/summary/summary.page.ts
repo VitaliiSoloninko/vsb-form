@@ -7,13 +7,22 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { FormDataService } from '../services/form-data.service';
 import { PdfService } from '../services/pdf.service';
+import { TranslationService } from '../services/translation.service';
 
 @Component({
   selector: 'app-summary',
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton],
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonButton,
+    TranslocoPipe,
+  ],
   templateUrl: './summary.page.html',
   styleUrls: ['./summary.page.scss'],
 })
@@ -26,6 +35,7 @@ export class SummaryPage {
     private router: Router,
     private formDataService: FormDataService,
     private pdfService: PdfService,
+    private translationService: TranslationService,
   ) {}
 
   // Format date from "2024-01" to "January 2024"
@@ -43,8 +53,8 @@ export class SummaryPage {
   downloadPDF() {
     const data = this.formData();
     if (data) {
-      // Get current language from localStorage or default to 'de'
-      const currentLang = localStorage.getItem('selectedLanguage') || 'de';
+      // Get current language from translation service
+      const currentLang = this.translationService.activeLang();
       this.pdfService.generatePDF(data, currentLang).catch((err) => {
         console.error('Error generating PDF:', err);
       });

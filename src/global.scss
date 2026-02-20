@@ -65,3 +65,61 @@ h3 {
   color: var(--ion-color-primary);
   margin: 0;
 }
+
+/* RTL Support for Arabic */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+
+  ion-button {
+    ion-icon[slot="start"] {
+      margin-inline-start: 0;
+      margin-inline-end: 8px;
+    }
+
+    ion-icon[slot="end"] {
+      margin-inline-start: 8px;
+      margin-inline-end: 0;
+    }
+  }
+
+  .header-container {
+    direction: rtl;
+  }
+
+  .logo-section {
+    text-align: right;
+  }
+
+  .language-section {
+    text-align: left;
+  }
+
+  ion-label {
+    text-align: right;
+  }
+
+  .info-grid {
+    .label {
+      text-align: right;
+    }
+    .value {
+      text-align: right;
+    }
+  }
+
+  .button-group {
+    flex-direction: row-reverse;
+  }
+
+  .step-indicator {
+    direction: ltr; /* Keep step numbers LTR */
+  }
+}
+
+/* Smooth transitions for direction changes */
+* {
+  transition:
+    padding 0.3s ease,
+    margin 0.3s ease;
+}

@@ -1,0 +1,127 @@
+{
+  "HEADER": {
+    "LOGO": "Резюме"
+  },
+  "STEPS": {
+    "PERSONAL": "Особисті дані",
+    "CONTACT": "Контакти та адреса",
+    "LANGUAGES": "Мови",
+    "EDUCATION": "Освіта",
+    "WORK": "Досвід роботи"
+  },
+  "STEP1": {
+    "TITLE": "Особисті дані",
+    "FIRST_NAME": "Ім'я",
+    "LAST_NAME": "Прізвище",
+    "DATE_OF_BIRTH": "Дата народження",
+    "PLACE_OF_BIRTH": "Місце народження",
+    "NATIONALITY": "Національність",
+    "MARITAL_STATUS": {
+      "LABEL": "Сімейний стан",
+      "SINGLE": "Неодружений/Незаміжня",
+      "MARRIED": "Одружений/Заміжня",
+      "DIVORCED": "Розлучений/Розлучена"
+    }
+  },
+  "STEP2": {
+    "TITLE": "Контакти та адреса",
+    "PHONE": "Телефон",
+    "EMAIL": "Ел. пошта",
+    "STREET": "Вулиця",
+    "HOUSE_NUMBER": "Номер будинку",
+    "POSTAL_CODE": "Поштовий індекс",
+    "CITY": "Місто"
+  },
+  "STEP3": {
+    "TITLE": "Мови",
+    "GERMAN": "Німецька",
+    "ENGLISH": "Англійська",
+    "ADDITIONAL_LANGUAGES": "Додаткові мови",
+    "LANGUAGE_NAME": "Мова",
+    "LEVEL": "Рівень",
+    "ADD_LANGUAGE": "Додати мову",
+    "REMOVE": "Видалити",
+    "LEVELS": {
+      "A1": "A1 - Початковий",
+      "A2": "A2 - Елементарний",
+      "B1": "B1 - Середній",
+      "B2": "B2 - Вище середнього",
+      "C1": "C1 - Просунутий",
+      "C2": "C2 - Рідна мова"
+    }
+  },
+  "STEP4": {
+    "TITLE": "Освіта",
+    "SCHOOL_EDUCATION": "Шкільна освіта",
+    "TYPE": "Тип освіти",
+    "TYPES": {
+      "NINE_CLASSES": "9 класів",
+      "TEN_CLASSES": "10 класів",
+      "GYMNASIUM": "Гімназія"
+    },
+    "COMPLETION_DATE": "Дата закінчення",
+    "HIGHER_EDUCATION": "Вища освіта",
+    "DEGREE": "Ступінь",
+    "DEGREES": {
+      "BACHELOR": "Бакалавр",
+      "MASTER": "Магістр"
+    },
+    "FIELD_OF_STUDY": "Спеціальність",
+    "INSTITUTION": "Заклад",
+    "MONTH": "Місяць",
+    "YEAR": "Рік"
+  },
+  "STEP5": {
+    "TITLE": "Досвід роботи",
+    "ADD_EXPERIENCE": "Додати досвід роботи",
+    "POSITION": "Посада",
+    "COMPANY": "Компанія",
+    "RESPONSIBILITIES": "Обов'язки",
+    "START_DATE": "Дата початку",
+    "END_DATE": "Дата закінчення",
+    "CURRENT": "По теперішній час",
+    "REMOVE": "Видалити",
+    "MONTH": "Місяць",
+    "YEAR": "Рік"
+  },
+  "SUMMARY": {
+    "TITLE": "Підсумок",
+    "PERSONAL_INFO": "Особиста інформація",
+    "CONTACT_INFO": "Контактна інформація",
+    "ADDRESS": "Адреса",
+    "LANGUAGE_SKILLS": "Мови",
+    "EDUCATION_INFO": "Освіта",
+    "SCHOOL": "Школа",
+    "HIGHER_ED": "Вища освіта",
+    "WORK_EXPERIENCE": "Досвід роботи",
+    "EMPTY": "Інформація не вказана"
+  },
+  "BUTTONS": {
+    "NEXT": "Далі",
+    "BACK": "Назад",
+    "CREATE_PDF": "Створити PDF",
+    "EDIT": "Редагувати"
+  },
+  "COMMON": {
+    "LOADING": "Завантаження...",
+    "ERROR": "Помилка",
+    "SUCCESS": "Успіх",
+    "REQUIRED": "Обов'язково",
+    "INVALID_EMAIL": "Невірна адреса ел. пошти",
+    "PRESENT": "По теперішній час"
+  },
+  "MONTHS": {
+    "JAN": "Січень",
+    "FEB": "Лютий",
+    "MAR": "Березень",
+    "APR": "Квітень",
+    "MAY": "Травень",
+    "JUN": "Червень",
+    "JUL": "Липень",
+    "AUG": "Серпень",
+    "SEP": "Вересень",
+    "OCT": "Жовтень",
+    "NOV": "Листопад",
+    "DEC": "Грудень"
+  }
+}

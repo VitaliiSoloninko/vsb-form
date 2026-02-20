@@ -1,11 +1,11 @@
 <div class="step-content" [formGroup]="formGroup">
-  <h2>Berufserfahrung</h2>
+  <h2>{{ "STEP5.TITLE" | transloco }}</h2>
 
   <div formArrayName="workExperiences">
     @for (experience of workExperiences.controls; track $index) {
       <div class="work-experience-card" [formGroupName]="$index">
         <div class="card-header">
-          <h3>Position {{ $index + 1 }}</h3>
+          <h3>{{ "STEP5.POSITION" | transloco }} {{ $index + 1 }}</h3>
           @if (workExperiences.length > 1) {
             <ion-button
               fill="clear"
@@ -19,33 +19,41 @@
         </div>
 
         <ion-item button="true" [id]="'work-start-' + $index">
-          <ion-label position="stacked">Startdatum</ion-label>
+          <ion-label position="stacked">{{
+            "STEP5.START_DATE" | transloco
+          }}</ion-label>
           <div class="date-value">
             {{ formatDate(experience.get("start")?.value) }}
           </div>
         </ion-item>
 
         <ion-item button="true" [id]="'work-end-' + $index">
-          <ion-label position="stacked">Enddatum</ion-label>
+          <ion-label position="stacked">{{
+            "STEP5.END_DATE" | transloco
+          }}</ion-label>
           <div class="date-value">
             {{ formatDate(experience.get("end")?.value) }}
           </div>
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating">Position</ion-label>
+          <ion-label position="floating">{{
+            "STEP5.POSITION" | transloco
+          }}</ion-label>
           <ion-input
             formControlName="position"
             type="text"
-            placeholder="z.B. Softwareentwickler"
+            [placeholder]="'STEP5.POSITION' | transloco"
           ></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating">Verantwortlichkeiten</ion-label>
+          <ion-label position="floating">{{
+            "STEP5.RESPONSIBILITIES" | transloco
+          }}</ion-label>
           <ion-textarea
             formControlName="responsibilities"
-            placeholder="Beschreiben Sie Ihre Hauptaufgaben..."
+            [placeholder]="'STEP5.RESPONSIBILITIES' | transloco"
             [autoGrow]="true"
             rows="3"
           ></ion-textarea>
@@ -74,6 +82,6 @@
     class="add-button"
   >
     <ion-icon slot="start" name="add-outline"></ion-icon>
-    Weitere Position hinzufügen
+    {{ "STEP5.ADD_EXPERIENCE" | transloco }}
   </ion-button>
 </div>

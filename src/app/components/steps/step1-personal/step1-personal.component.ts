@@ -19,6 +19,7 @@ import {
   IonSelect,
   IonSelectOption,
 } from '@ionic/angular/standalone';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { PersonalData } from '../../../models/form-data.models';
 import { FormDataService } from '../../../services/form-data.service';
 
@@ -32,6 +33,7 @@ import { FormDataService } from '../../../services/form-data.service';
     IonInput,
     IonSelect,
     IonSelectOption,
+    TranslocoPipe,
   ],
   templateUrl: './step1-personal.component.html',
   styleUrls: ['./step1-personal.component.scss'],
@@ -51,9 +53,9 @@ export class Step1PersonalComponent implements OnInit {
   isValid = computed(() => this.formGroup?.valid ?? false);
 
   maritalStatuses = [
-    { value: 'single', label: 'Ledig' },
-    { value: 'married', label: 'Verheiratet' },
-    { value: 'divorced', label: 'Geschieden' },
+    { value: 'single', label: 'STEP1.MARITAL_STATUS.SINGLE' },
+    { value: 'married', label: 'STEP1.MARITAL_STATUS.MARRIED' },
+    { value: 'divorced', label: 'STEP1.MARITAL_STATUS.DIVORCED' },
   ];
 
   constructor(private formDataService: FormDataService) {

@@ -13,13 +13,14 @@ import {
   Validators,
 } from '@angular/forms';
 import { IonInput, IonItem, IonLabel } from '@ionic/angular/standalone';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { ContactData } from '../../../models/form-data.models';
 import { FormDataService } from '../../../services/form-data.service';
 
 @Component({
   selector: 'app-step2-contact',
   standalone: true,
-  imports: [ReactiveFormsModule, IonItem, IonLabel, IonInput],
+  imports: [ReactiveFormsModule, IonItem, IonLabel, IonInput, TranslocoPipe],
   templateUrl: './step2-contact.component.html',
   styleUrls: ['./step2-contact.component.scss'],
 })
