@@ -108,7 +108,8 @@
     "SUCCESS": "Success",
     "REQUIRED": "Required",
     "INVALID_EMAIL": "Invalid email address",
-    "PRESENT": "Present"
+    "PRESENT": "Present",
+    "CONFIRM_CLEAR": "Are you sure you want to clear all form data?"
   },
   "MONTHS": {
     "JAN": "January",

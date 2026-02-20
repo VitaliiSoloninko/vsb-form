@@ -108,7 +108,8 @@
     "SUCCESS": "Erfolg",
     "REQUIRED": "Erforderlich",
     "INVALID_EMAIL": "Ungültige E-Mail-Adresse",
-    "PRESENT": "Bis heute"
+    "PRESENT": "Bis heute",
+    "CONFIRM_CLEAR": "Sind Sie sicher, dass Sie alle Formulardaten löschen möchten?"
   },
   "MONTHS": {
     "JAN": "Januar",

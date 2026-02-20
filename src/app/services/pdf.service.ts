@@ -176,7 +176,7 @@ export class PdfService {
         master: 'ماجستير',
       },
     },
-    uk: {
+    ua: {
       title: 'Анкета',
       personal: 'Особиста інформація',
       contact: 'Контакти та адреса',
